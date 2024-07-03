@@ -1,0 +1,6 @@
+STEGO/dataloader_test/
+STEGO/testing_data/
+STEGO/models/
+STEGO/saved_models/
+CBS2/dataset/
+CBS2/logs/
