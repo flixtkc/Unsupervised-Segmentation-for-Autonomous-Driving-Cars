@@ -4,3 +4,5 @@ STEGO/models/
 STEGO/saved_models/
 CBS2/dataset/
 CBS2/logs/
+DriveAndSegment/dino_deitsmall16_pretrain.pth
+DriveAndSegment/weights/
