@@ -1,0 +1,9 @@
+kornia
+hydra-core
+wget
+seaborn
+easydict
+torchpq
+pydensecrf
+setuptools==59.5.0
+pyDeprecate==0.3.1

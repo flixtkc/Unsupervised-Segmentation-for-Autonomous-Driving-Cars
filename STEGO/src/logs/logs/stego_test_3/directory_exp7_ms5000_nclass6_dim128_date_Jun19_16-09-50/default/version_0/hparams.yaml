@@ -1,0 +1,134 @@
+n_classes: 6
+cfg:
+  output_root: logs
+  pytorch_data_dir: /home/fhoekstra/STEGO/dataloader_test/v2/cropped/
+  experiment_name: exp7_ms5000_nclass6_dim128
+  log_dir: stego_test_3
+  azureml_logging: false
+  submitting_to_aml: false
+  num_workers: 16
+  max_steps: 5000
+  batch_size: 16
+  num_neighbors: 7
+  dataset_name: directory
+  dir_dataset_name: directory_five_crop_0.5
+  dir_dataset_n_classes: 6
+  has_labels: false
+  crop_type: five
+  crop_ratio: 0.5
+  res: 200
+  loader_crop_type: center
+  extra_clusters: 0
+  use_true_labels: false
+  use_recalibrator: false
+  model_type: vit_small
+  arch: dino
+  use_fit_model: false
+  dino_feat_type: feat
+  projection_type: nonlinear
+  dino_patch_size: 8
+  granularity: 1
+  continuous: true
+  dim: 128
+  dropout: true
+  zero_clamp: true
+  lr: 0.0005
+  pretrained_weights: null
+  use_salience: false
+  stabalize: false
+  stop_at_zero: true
+  pointwise: true
+  feature_samples: 11
+  neg_samples: 5
+  aug_alignment_weight: 0.0
+  correspondence_weight: 1.0
+  neg_inter_weight: 0.9058762625226623
+  pos_inter_weight: 0.577453483136995
+  pos_intra_weight: 1
+  neg_inter_shift: 0.31361241889448443
+  pos_inter_shift: 0.1754346515479633
+  pos_intra_shift: 0.45828472207
+  rec_weight: 0.0
+  repulsion_weight: 0.0
+  crf_weight: 0.0
+  alpha: 0.5
+  beta: 0.15
+  gamma: 0.05
+  w1: 10.0
+  w2: 3.0
+  shift: 0.0
+  crf_samples: 1000
+  color_space: rgb
+  reset_probe_steps: null
+  n_images: 5
+  scalar_log_freq: 10
+  checkpoint_freq: 50
+  val_freq: 100
+  hist_freq: 100
+  full_name: stego_test_3/directory_exp7_ms5000_nclass6_dim128
+output_root: logs
+pytorch_data_dir: /home/fhoekstra/STEGO/dataloader_test/v2/cropped/
+experiment_name: exp7_ms5000_nclass6_dim128
+log_dir: stego_test_3
+azureml_logging: false
+submitting_to_aml: false
+num_workers: 16
+max_steps: 5000
+batch_size: 16
+num_neighbors: 7
+dataset_name: directory
+dir_dataset_name: directory_five_crop_0.5
+dir_dataset_n_classes: 6
+has_labels: false
+crop_type: five
+crop_ratio: 0.5
+res: 200
+loader_crop_type: center
+extra_clusters: 0
+use_true_labels: false
+use_recalibrator: false
+model_type: vit_small
+arch: dino
+use_fit_model: false
+dino_feat_type: feat
+projection_type: nonlinear
+dino_patch_size: 8
+granularity: 1
+continuous: true
+dim: 128
+dropout: true
+zero_clamp: true
+lr: 0.0005
+pretrained_weights: null
+use_salience: false
+stabalize: false
+stop_at_zero: true
+pointwise: true
+feature_samples: 11
+neg_samples: 5
+aug_alignment_weight: 0.0
+correspondence_weight: 1.0
+neg_inter_weight: 0.9058762625226623
+pos_inter_weight: 0.577453483136995
+pos_intra_weight: 1
+neg_inter_shift: 0.31361241889448443
+pos_inter_shift: 0.1754346515479633
+pos_intra_shift: 0.45828472207
+rec_weight: 0.0
+repulsion_weight: 0.0
+crf_weight: 0.0
+alpha: 0.5
+beta: 0.15
+gamma: 0.05
+w1: 10.0
+w2: 3.0
+shift: 0.0
+crf_samples: 1000
+color_space: rgb
+reset_probe_steps: null
+n_images: 5
+scalar_log_freq: 10
+checkpoint_freq: 50
+val_freq: 100
+hist_freq: 100
+full_name: stego_test_3/directory_exp7_ms5000_nclass6_dim128
