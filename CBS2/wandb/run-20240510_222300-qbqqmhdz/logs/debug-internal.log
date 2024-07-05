@@ -1,0 +1,337 @@
+2024-05-10 22:23:00,813 INFO    StreamThr :318230 [internal.py:wandb_internal():89] W&B internal server running at pid: 318230, started at: 2024-05-10 22:23:00.813563
+2024-05-10 22:23:00,814 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status
+2024-05-10 22:23:00,817 INFO    WriterThread:318230 [datastore.py:open_for_write():87] open: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/run-qbqqmhdz.wandb
+2024-05-10 22:23:00,817 DEBUG   SenderThread:318230 [sender.py:send():379] send: header
+2024-05-10 22:23:00,869 DEBUG   SenderThread:318230 [sender.py:send():379] send: run
+2024-05-10 22:23:01,235 INFO    SenderThread:318230 [dir_watcher.py:__init__():211] watching files in: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files
+2024-05-10 22:23:01,235 INFO    SenderThread:318230 [sender.py:_start_run_threads():1127] run started: qbqqmhdz with start time 1715372580.81362
+2024-05-10 22:23:01,242 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: check_version
+2024-05-10 22:23:01,243 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: check_version
+2024-05-10 22:23:01,320 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: run_start
+2024-05-10 22:23:01,326 DEBUG   HandlerThread:318230 [system_info.py:__init__():26] System info init
+2024-05-10 22:23:01,326 DEBUG   HandlerThread:318230 [system_info.py:__init__():41] System info init done
+2024-05-10 22:23:01,326 INFO    HandlerThread:318230 [system_monitor.py:start():194] Starting system monitor
+2024-05-10 22:23:01,326 INFO    SystemMonitor:318230 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-10 22:23:01,326 INFO    SystemMonitor:318230 [interfaces.py:start():190] Started cpu monitoring
+2024-05-10 22:23:01,327 INFO    HandlerThread:318230 [system_monitor.py:probe():214] Collecting system info
+2024-05-10 22:23:01,327 INFO    SystemMonitor:318230 [interfaces.py:start():190] Started disk monitoring
+2024-05-10 22:23:01,328 INFO    SystemMonitor:318230 [interfaces.py:start():190] Started gpu monitoring
+2024-05-10 22:23:01,328 INFO    SystemMonitor:318230 [interfaces.py:start():190] Started memory monitoring
+2024-05-10 22:23:01,329 INFO    SystemMonitor:318230 [interfaces.py:start():190] Started network monitoring
+2024-05-10 22:23:01,335 DEBUG   HandlerThread:318230 [system_info.py:probe():150] Probing system
+2024-05-10 22:23:01,340 DEBUG   HandlerThread:318230 [system_info.py:_probe_git():135] Probing git
+2024-05-10 22:23:01,350 DEBUG   HandlerThread:318230 [system_info.py:_probe_git():143] Probing git done
+2024-05-10 22:23:01,350 DEBUG   HandlerThread:318230 [system_info.py:probe():198] Probing system done
+2024-05-10 22:23:01,350 DEBUG   HandlerThread:318230 [system_monitor.py:probe():223] {'os': 'Linux-6.2.0-31-generic-x86_64-with-debian-bookworm-sid', 'python': '3.7.9', 'heartbeatAt': '2024-05-10T20:23:01.335666', 'startedAt': '2024-05-10T20:23:00.808413', 'docker': None, 'cuda': None, 'args': ('--node-ip-address=145.100.134.10', '--node-manager-port=45377', '--object-store-name=/tmp/ray/session_2024-05-10_22-22-51_891121_317408/sockets/plasma_store', '--raylet-name=/tmp/ray/session_2024-05-10_22-22-51_891121_317408/sockets/raylet', '--redis-address=None', '--temp-dir=/tmp/ray', '--metrics-agent-port=63754', '--runtime-env-agent-port=57273', '--logging-rotate-bytes=536870912', '--logging-rotate-backup-count=5', '--runtime-env-agent-port=57273', '--gcs-address=145.100.134.10:60078', '--session-name=session_2024-05-10_22-22-51_891121_317408', '--temp-dir=/tmp/ray', '--webui=', '--cluster-id=879b3b44cb99333c28467faa83006965eab2cf294d5a8d2739388c4b', '--startup-token=16', '--worker-launch-time-ms=1715372574494'), 'state': 'running', 'program': '/home/fhoekstra/miniconda3/envs/cbs2/lib/python3.7/site-packages/ray/_private/workers/default_worker.py', 'codePathLocal': None, 'git': {'remote': 'git@github.com:mael25/CBS2.git', 'commit': 'f9735d306a42766339e07ed879d75f1765135a96'}, 'email': 'flixtkc@gmail.com', 'root': '/home/fhoekstra/CBS2', 'host': 'ws5', 'username': 'fhoekstra', 'executable': '/home/fhoekstra/miniconda3/envs/cbs2/bin/python', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 4199.9940625, 'min': 800.0, 'max': 5000.0}, 'cpu_freq_per_core': [{'current': 4114.423, 'min': 800.0, 'max': 5000.0}, {'current': 4114.457, 'min': 800.0, 'max': 5000.0}, {'current': 4142.179, 'min': 800.0, 'max': 5000.0}, {'current': 4132.126, 'min': 800.0, 'max': 5000.0}, {'current': 4168.323, 'min': 800.0, 'max': 5000.0}, {'current': 4121.74, 'min': 800.0, 'max': 5000.0}, {'current': 4114.425, 'min': 800.0, 'max': 5000.0}, {'current': 4108.625, 'min': 800.0, 'max': 5000.0}, {'current': 4126.908, 'min': 800.0, 'max': 5000.0}, {'current': 4136.335, 'min': 800.0, 'max': 5000.0}, {'current': 4112.634, 'min': 800.0, 'max': 5000.0}, {'current': 4127.817, 'min': 800.0, 'max': 5000.0}, {'current': 4114.438, 'min': 800.0, 'max': 5000.0}, {'current': 4124.745, 'min': 800.0, 'max': 5000.0}, {'current': 4198.08, 'min': 800.0, 'max': 5000.0}, {'current': 4110.27, 'min': 800.0, 'max': 5000.0}], 'disk': {'/': {'total': 937.3305015563965, 'used': 813.9561462402344}}, 'gpu': 'NVIDIA GeForce RTX 2080 Ti', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}], 'memory': {'total': 62.61648178100586}}
+2024-05-10 22:23:01,350 INFO    HandlerThread:318230 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-10 22:23:01,350 INFO    HandlerThread:318230 [system_monitor.py:probe():227] Publishing system info
+2024-05-10 22:23:01,350 DEBUG   HandlerThread:318230 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2024-05-10 22:23:02,237 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_created():271] file/dir created: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/conda-environment.yaml
+2024-05-10 22:23:03,427 DEBUG   HandlerThread:318230 [system_info.py:_save_conda():222] Saving conda packages done
+2024-05-10 22:23:03,428 INFO    HandlerThread:318230 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-10 22:23:03,432 DEBUG   SenderThread:318230 [sender.py:send():379] send: files
+2024-05-10 22:23:03,432 INFO    SenderThread:318230 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-05-10 22:23:03,558 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: python_packages
+2024-05-10 22:23:03,558 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: python_packages
+2024-05-10 22:23:03,559 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:23:03,559 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:23:03,600 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:23:03,731 DEBUG   SenderThread:318230 [sender.py:send():379] send: telemetry
+2024-05-10 22:23:03,897 INFO    wandb-upload_0:318230 [upload_job.py:push():131] Uploaded file /tmp/tmpr8iwfv7ewandb/pgzksmwa-wandb-metadata.json
+2024-05-10 22:23:04,236 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/conda-environment.yaml
+2024-05-10 22:23:04,236 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_created():271] file/dir created: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:23:04,236 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_created():271] file/dir created: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/wandb-metadata.json
+2024-05-10 22:23:04,236 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_created():271] file/dir created: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/requirements.txt
+2024-05-10 22:23:06,167 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:23:06,236 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:23:08,237 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:23:10,237 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:23:11,948 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:23:16,948 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:23:18,559 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:23:18,559 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:23:18,559 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:23:22,795 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:23:26,241 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:23:28,412 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:23:33,418 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:23:33,558 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:23:33,559 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:23:33,561 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:23:34,242 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/config.yaml
+2024-05-10 22:23:38,782 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:23:42,244 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:23:43,876 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:23:48,559 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:23:48,559 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:23:48,559 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:23:49,724 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:23:54,724 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:00,248 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:24:00,460 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:01,329 DEBUG   SystemMonitor:318230 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-10 22:24:01,330 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:24:03,560 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:24:03,561 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:24:03,561 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:24:05,731 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:10,732 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:15,732 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:16,251 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:24:18,560 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:24:18,561 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:24:18,561 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:24:20,746 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:25,746 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:30,747 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:31,331 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:24:33,560 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:24:33,561 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:24:33,561 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:24:34,255 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:24:36,733 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:41,733 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:46,734 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:48,560 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:24:48,561 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:24:48,561 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:24:50,259 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:24:51,752 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:24:56,752 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:01,332 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:25:02,332 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:03,562 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:25:03,562 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:25:03,562 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:25:04,262 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:25:07,739 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:12,739 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:18,456 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:18,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:25:18,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:25:18,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:25:19,265 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:25:23,770 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:28,770 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:31,267 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:25:31,332 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:25:33,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:25:33,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:25:33,563 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:25:34,696 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:39,697 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:45,270 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:25:45,472 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:48,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:25:48,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:25:48,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:25:50,731 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:56,364 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:25:57,273 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:26:01,333 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:26:02,333 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:03,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:26:03,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:26:03,563 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:26:07,702 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:09,275 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:26:13,288 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:18,289 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:18,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:26:18,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:26:18,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:26:23,278 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:26:24,140 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:29,141 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:31,334 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:26:33,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:26:33,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:26:33,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:26:35,064 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:35,281 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:26:40,065 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:45,065 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:48,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:26:48,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:26:48,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:26:49,284 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:26:50,765 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:26:55,766 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:01,287 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:27:01,335 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:27:01,335 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:03,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:27:03,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:27:03,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:27:06,782 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:11,783 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:13,289 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:27:17,452 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:18,563 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:27:18,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:27:18,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:27:22,778 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:27,292 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:27:28,156 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:31,336 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:27:33,336 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:33,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:27:33,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:27:33,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:27:38,940 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:39,294 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:27:43,941 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:48,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:27:48,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:27:48,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:27:49,800 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:27:51,297 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:27:55,716 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:00,717 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:01,336 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:28:03,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:28:03,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:28:03,612 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:28:05,300 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:28:06,707 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:11,707 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:17,302 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:28:17,348 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:18,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:28:18,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:28:18,566 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:28:22,783 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:27,784 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:31,305 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:28:31,337 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:28:33,337 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:33,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:28:33,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:28:33,564 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:28:38,753 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:43,308 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:28:44,064 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:48,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:28:48,564 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:28:48,565 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:28:49,782 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:54,782 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:28:55,311 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:28:59,832 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:01,337 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:29:03,570 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:29:03,571 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:29:03,571 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:29:05,759 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:09,314 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:29:11,448 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:16,449 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:18,570 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:29:18,570 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:29:18,570 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:29:21,317 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:29:22,060 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:27,061 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:31,338 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:29:32,339 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:33,570 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:29:33,570 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:29:33,570 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:29:34,319 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:29:37,732 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:42,732 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:48,322 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:29:48,332 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:48,570 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:29:48,570 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:29:48,570 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:29:53,773 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:29:59,256 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:00,324 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:30:01,339 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:30:03,585 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:30:03,585 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:30:03,586 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:30:04,817 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:09,818 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:12,327 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:30:14,932 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:18,574 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:30:18,574 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:30:18,584 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:30:20,730 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:26,330 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:30:26,628 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:31,339 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:30:32,340 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:33,574 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:30:33,574 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:30:33,584 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:30:38,268 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:38,333 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:30:43,269 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:48,269 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:48,574 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:30:48,574 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:30:48,584 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:30:50,335 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:30:54,048 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:30:59,049 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:01,340 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:31:03,574 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:31:03,574 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:31:03,584 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:31:04,338 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:31:04,793 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:09,793 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:15,560 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:16,341 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:31:18,574 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:31:18,574 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:31:18,584 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:31:20,735 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:25,736 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:28,343 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:31:31,336 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:31,340 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:31:33,574 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:31:33,575 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:31:33,584 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:31:36,728 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:42,108 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:42,346 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:31:47,109 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:48,582 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:31:48,582 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:31:48,584 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:31:52,795 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:31:54,348 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:31:57,836 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:01,341 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:32:03,342 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:03,582 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:32:03,582 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:32:03,584 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:32:06,351 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:32:08,504 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:13,505 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:18,582 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:32:18,582 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:32:18,584 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:32:18,728 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:20,354 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:32:23,729 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:28,730 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:31,342 DEBUG   SenderThread:318230 [sender.py:send():379] send: stats
+2024-05-10 22:32:32,356 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:32:33,583 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:32:33,583 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:32:33,585 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:32:33,765 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:38,766 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:44,246 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 22:32:44,358 INFO    Thread-12 :318230 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240510_222300-qbqqmhdz/files/output.log
+2024-05-10 22:32:48,583 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 22:32:48,583 DEBUG   SenderThread:318230 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 22:32:48,585 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 22:32:49,726 DEBUG   HandlerThread:318230 [handler.py:handle_request():146] handle_request: status_report

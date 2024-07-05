@@ -1,0 +1,57 @@
+---------------------WITH PPM-----------------------
+[1m> Loading the world
+[1m> Running the route
+[1m> Stopping the route
+[1m========= Results of NoCrash_Town01_0_w10_s78_t225 (repetition 0) ------ [91mFAILURE[39m[22m [1m=========
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2024-05-10 16:39:30 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2024-05-10 16:43:05 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 214.54s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 264.1s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 1.231               │
+╘═════════════════════════════════╧═════════════════════╛
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[39m │ 43.59 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[39m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[39m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ --> vehicle           │ [92mSUCCESS[39m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ --> walker            │ [92mSUCCESS[39m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [91mFAILURE[39m │ 1 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[39m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[39m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [91mFAILURE[39m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[39m │         │
+╘═══════════════════════╧═════════╧═════════╛
+[91mFailed to stop the scenario, the statistics might be empty:
+[91m> wandb.Video requires moviepy and imageio when passing raw data.  Install with "pip install moviepy imageio"
+Traceback (most recent call last):
+  File "/home/fhoekstra/CBS2/leaderboard/leaderboard/nocrash_evaluator.py", line 345, in _load_and_run_scenario
+    self._cleanup()
+  File "/home/fhoekstra/CBS2/leaderboard/leaderboard/nocrash_evaluator.py", line 166, in _cleanup
+    self.agent_instance.destroy()
+  File "autoagents/cbs2_agent.py", line 125, in destroy
+    self.flush_data()
+  File "autoagents/cbs2_agent.py", line 135, in flush_data
+    'vid': wandb.Video(np.stack(self.vizs).transpose((0,3,1,2)), fps=20, format='mp4')
+  File "/home/fhoekstra/miniconda3/envs/cbs2/lib/python3.7/site-packages/wandb/sdk/data_types/video.py", line 126, in __init__
+    self.encode()
+  File "/home/fhoekstra/miniconda3/envs/cbs2/lib/python3.7/site-packages/wandb/sdk/data_types/video.py", line 131, in encode
+    required='wandb.Video requires moviepy and imageio when passing raw data.  Install with "pip install moviepy imageio"',
+  File "/home/fhoekstra/miniconda3/envs/cbs2/lib/python3.7/site-packages/wandb/util.py", line 272, in get_module
+    raise wandb.Error(required)
+wandb.errors.Error: wandb.Video requires moviepy and imageio when passing raw data.  Install with "pip install moviepy imageio"

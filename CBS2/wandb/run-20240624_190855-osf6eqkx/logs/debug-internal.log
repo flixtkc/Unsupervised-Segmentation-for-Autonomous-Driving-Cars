@@ -1,0 +1,46 @@
+2024-06-24 19:08:55,235 INFO    StreamThr :589013 [internal.py:wandb_internal():89] W&B internal server running at pid: 589013, started at: 2024-06-24 19:08:55.234776
+2024-06-24 19:08:55,236 DEBUG   HandlerThread:589013 [handler.py:handle_request():146] handle_request: status
+2024-06-24 19:08:55,238 INFO    WriterThread:589013 [datastore.py:open_for_write():87] open: /home/fhoekstra/CBS2/wandb/run-20240624_190855-osf6eqkx/run-osf6eqkx.wandb
+2024-06-24 19:08:55,239 DEBUG   SenderThread:589013 [sender.py:send():379] send: header
+2024-06-24 19:08:55,264 DEBUG   SenderThread:589013 [sender.py:send():379] send: run
+2024-06-24 19:08:56,427 INFO    SenderThread:589013 [dir_watcher.py:__init__():211] watching files in: /home/fhoekstra/CBS2/wandb/run-20240624_190855-osf6eqkx/files
+2024-06-24 19:08:56,427 INFO    SenderThread:589013 [sender.py:_start_run_threads():1127] run started: osf6eqkx with start time 1719248935.234624
+2024-06-24 19:08:56,433 DEBUG   HandlerThread:589013 [handler.py:handle_request():146] handle_request: check_version
+2024-06-24 19:08:56,433 DEBUG   SenderThread:589013 [sender.py:send_request():406] send_request: check_version
+2024-06-24 19:08:56,508 DEBUG   HandlerThread:589013 [handler.py:handle_request():146] handle_request: run_start
+2024-06-24 19:08:56,515 DEBUG   HandlerThread:589013 [system_info.py:__init__():26] System info init
+2024-06-24 19:08:56,515 DEBUG   HandlerThread:589013 [system_info.py:__init__():41] System info init done
+2024-06-24 19:08:56,515 INFO    HandlerThread:589013 [system_monitor.py:start():194] Starting system monitor
+2024-06-24 19:08:56,515 INFO    SystemMonitor:589013 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-06-24 19:08:56,516 INFO    HandlerThread:589013 [system_monitor.py:probe():214] Collecting system info
+2024-06-24 19:08:56,516 INFO    SystemMonitor:589013 [interfaces.py:start():190] Started cpu monitoring
+2024-06-24 19:08:56,517 INFO    SystemMonitor:589013 [interfaces.py:start():190] Started disk monitoring
+2024-06-24 19:08:56,517 INFO    SystemMonitor:589013 [interfaces.py:start():190] Started gpu monitoring
+2024-06-24 19:08:56,518 INFO    SystemMonitor:589013 [interfaces.py:start():190] Started memory monitoring
+2024-06-24 19:08:56,519 INFO    SystemMonitor:589013 [interfaces.py:start():190] Started network monitoring
+2024-06-24 19:08:56,524 DEBUG   HandlerThread:589013 [system_info.py:probe():150] Probing system
+2024-06-24 19:08:56,528 DEBUG   HandlerThread:589013 [system_info.py:_probe_git():135] Probing git
+2024-06-24 19:08:56,538 DEBUG   HandlerThread:589013 [system_info.py:_probe_git():143] Probing git done
+2024-06-24 19:08:56,539 DEBUG   HandlerThread:589013 [system_info.py:probe():198] Probing system done
+2024-06-24 19:08:56,539 DEBUG   HandlerThread:589013 [system_monitor.py:probe():223] {'os': 'Linux-6.2.0-31-generic-x86_64-with-debian-bookworm-sid', 'python': '3.7.9', 'heartbeatAt': '2024-06-24T17:08:56.524922', 'startedAt': '2024-06-24T17:08:55.230788', 'docker': None, 'cuda': None, 'args': ('--node-ip-address=145.100.134.10', '--node-manager-port=44791', '--object-store-name=/tmp/ray/session_2024-06-24_19-08-47_568748_588286/sockets/plasma_store', '--raylet-name=/tmp/ray/session_2024-06-24_19-08-47_568748_588286/sockets/raylet', '--redis-address=None', '--temp-dir=/tmp/ray', '--metrics-agent-port=41203', '--runtime-env-agent-port=60565', '--logging-rotate-bytes=536870912', '--logging-rotate-backup-count=5', '--runtime-env-agent-port=60565', '--gcs-address=145.100.134.10:63410', '--session-name=session_2024-06-24_19-08-47_568748_588286', '--temp-dir=/tmp/ray', '--webui=', '--cluster-id=719d50f1a5b941bb4f5fcc5dfd4a9f3803fc54d1eaf33b4d37c8e4fa', '--startup-token=16', '--worker-launch-time-ms=1719248929812'), 'state': 'running', 'program': '/home/fhoekstra/miniconda3/envs/cbs2/lib/python3.7/site-packages/ray/_private/workers/default_worker.py', 'codePathLocal': None, 'git': {'remote': 'git@github.com:mael25/CBS2.git', 'commit': 'f9735d306a42766339e07ed879d75f1765135a96'}, 'email': 'flixtkc@gmail.com', 'root': '/home/fhoekstra/CBS2', 'host': 'ws5', 'username': 'fhoekstra', 'executable': '/home/fhoekstra/miniconda3/envs/cbs2/bin/python', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 4560.5936875, 'min': 800.0, 'max': 5000.0}, 'cpu_freq_per_core': [{'current': 4503.989, 'min': 800.0, 'max': 5000.0}, {'current': 4530.955, 'min': 800.0, 'max': 5000.0}, {'current': 4544.921, 'min': 800.0, 'max': 5000.0}, {'current': 4515.78, 'min': 800.0, 'max': 5000.0}, {'current': 4516.818, 'min': 800.0, 'max': 5000.0}, {'current': 4546.127, 'min': 800.0, 'max': 5000.0}, {'current': 4542.449, 'min': 800.0, 'max': 5000.0}, {'current': 4545.84, 'min': 800.0, 'max': 5000.0}, {'current': 4529.683, 'min': 800.0, 'max': 5000.0}, {'current': 4555.002, 'min': 800.0, 'max': 5000.0}, {'current': 4552.906, 'min': 800.0, 'max': 5000.0}, {'current': 4506.056, 'min': 800.0, 'max': 5000.0}, {'current': 4545.142, 'min': 800.0, 'max': 5000.0}, {'current': 4542.366, 'min': 800.0, 'max': 5000.0}, {'current': 4520.546, 'min': 800.0, 'max': 5000.0}, {'current': 4542.775, 'min': 800.0, 'max': 5000.0}], 'disk': {'/': {'total': 937.3305015563965, 'used': 784.6673126220703}}, 'gpu': 'NVIDIA GeForce RTX 2080 Ti', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}], 'memory': {'total': 62.6165657043457}}
+2024-06-24 19:08:56,539 INFO    HandlerThread:589013 [system_monitor.py:probe():224] Finished collecting system info
+2024-06-24 19:08:56,539 INFO    HandlerThread:589013 [system_monitor.py:probe():227] Publishing system info
+2024-06-24 19:08:56,539 DEBUG   HandlerThread:589013 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2024-06-24 19:08:57,429 INFO    Thread-12 :589013 [dir_watcher.py:_on_file_created():271] file/dir created: /home/fhoekstra/CBS2/wandb/run-20240624_190855-osf6eqkx/files/conda-environment.yaml
+2024-06-24 19:08:58,415 DEBUG   HandlerThread:589013 [system_info.py:_save_conda():222] Saving conda packages done
+2024-06-24 19:08:58,415 INFO    HandlerThread:589013 [system_monitor.py:probe():229] Finished publishing system info
+2024-06-24 19:08:58,419 DEBUG   SenderThread:589013 [sender.py:send():379] send: files
+2024-06-24 19:08:58,420 INFO    SenderThread:589013 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-06-24 19:08:58,428 INFO    Thread-12 :589013 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240624_190855-osf6eqkx/files/conda-environment.yaml
+2024-06-24 19:08:58,428 INFO    Thread-12 :589013 [dir_watcher.py:_on_file_created():271] file/dir created: /home/fhoekstra/CBS2/wandb/run-20240624_190855-osf6eqkx/files/wandb-metadata.json
+2024-06-24 19:08:58,538 DEBUG   HandlerThread:589013 [handler.py:handle_request():146] handle_request: python_packages
+2024-06-24 19:08:58,538 DEBUG   HandlerThread:589013 [handler.py:handle_request():146] handle_request: stop_status
+2024-06-24 19:08:58,540 DEBUG   SenderThread:589013 [sender.py:send_request():406] send_request: python_packages
+2024-06-24 19:08:58,541 DEBUG   HandlerThread:589013 [handler.py:handle_request():146] handle_request: internal_messages
+2024-06-24 19:08:58,541 DEBUG   SenderThread:589013 [sender.py:send_request():406] send_request: stop_status
+2024-06-24 19:08:58,689 DEBUG   SenderThread:589013 [sender.py:send():379] send: telemetry
+2024-06-24 19:08:58,988 INFO    wandb-upload_0:589013 [upload_job.py:push():131] Uploaded file /tmp/tmp0xve10dvwandb/sokw7mk1-wandb-metadata.json
+2024-06-24 19:08:59,428 INFO    Thread-12 :589013 [dir_watcher.py:_on_file_created():271] file/dir created: /home/fhoekstra/CBS2/wandb/run-20240624_190855-osf6eqkx/files/output.log
+2024-06-24 19:08:59,428 INFO    Thread-12 :589013 [dir_watcher.py:_on_file_created():271] file/dir created: /home/fhoekstra/CBS2/wandb/run-20240624_190855-osf6eqkx/files/requirements.txt
+2024-06-24 19:09:00,690 DEBUG   HandlerThread:589013 [handler.py:handle_request():146] handle_request: status_report
+2024-06-24 19:09:01,429 INFO    Thread-12 :589013 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/fhoekstra/CBS2/wandb/run-20240624_190855-osf6eqkx/files/output.log

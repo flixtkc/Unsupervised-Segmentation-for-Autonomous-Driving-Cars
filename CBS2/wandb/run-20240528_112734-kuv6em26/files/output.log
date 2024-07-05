@@ -1,0 +1,10 @@
+
+[1m> Loading the world
+Town04 - RouteScenario_32
+[1m> Running the route
+Actor(id=1281, type=sensor.camera.rgb)
+0
+/home/fhoekstra/CBS2/rails/models/ego_model.py:32: UserWarning: where received a uint8 condition tensor. This behavior is deprecated and will be removed in a future version of PyTorch. Use a boolean condition instead. (Triggered internally at ../aten/src/ATen/native/TensorCompare.cpp:413.)
+  accel = torch.where(brake, self.brake_accel.expand(*brake.size()), self.throt_accel(throt))
+/home/fhoekstra/miniconda3/envs/cbs2/lib/python3.7/site-packages/torch/nn/functional.py:4228: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  "Default grid_sample and affine_grid behavior has changed "

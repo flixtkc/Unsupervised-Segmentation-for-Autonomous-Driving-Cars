@@ -1,0 +1,135 @@
+{
+    "os": "Linux-6.2.0-31-generic-x86_64-with-debian-bookworm-sid",
+    "python": "3.7.9",
+    "heartbeatAt": "2024-05-10T14:45:27.111157",
+    "startedAt": "2024-05-10T14:45:26.674478",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--mod",
+        "ppm",
+        "--town",
+        "Town01",
+        "--weather",
+        "test"
+    ],
+    "state": "running",
+    "program": "evaluate_nocrash.py",
+    "codePathLocal": "evaluate_nocrash.py",
+    "codePath": "evaluate_nocrash.py",
+    "git": {
+        "remote": "git@github.com:mael25/CBS2.git",
+        "commit": "f9735d306a42766339e07ed879d75f1765135a96"
+    },
+    "email": "flixtkc@gmail.com",
+    "root": "/home/fhoekstra/CBS2",
+    "host": "ws5",
+    "username": "fhoekstra",
+    "executable": "/home/fhoekstra/miniconda3/envs/cbs2/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 4199.769125,
+        "min": 800.0,
+        "max": 5000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4200.082,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4199.997,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4200.024,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4200.009,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4199.991,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4200.04,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4200.187,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4200.001,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4200.065,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4199.555,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4199.865,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4199.917,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4199.877,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4199.998,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4200.16,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4200.068,
+            "min": 800.0,
+            "max": 5000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 937.3305015563965,
+            "used": 813.6805267333984
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        }
+    ],
+    "memory": {
+        "total": 62.61648178100586
+    }
+}

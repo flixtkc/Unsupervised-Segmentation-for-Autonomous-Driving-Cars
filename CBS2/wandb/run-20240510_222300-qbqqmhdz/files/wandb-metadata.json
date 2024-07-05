@@ -1,0 +1,146 @@
+{
+    "os": "Linux-6.2.0-31-generic-x86_64-with-debian-bookworm-sid",
+    "python": "3.7.9",
+    "heartbeatAt": "2024-05-10T20:23:01.335666",
+    "startedAt": "2024-05-10T20:23:00.808413",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--node-ip-address=145.100.134.10",
+        "--node-manager-port=45377",
+        "--object-store-name=/tmp/ray/session_2024-05-10_22-22-51_891121_317408/sockets/plasma_store",
+        "--raylet-name=/tmp/ray/session_2024-05-10_22-22-51_891121_317408/sockets/raylet",
+        "--redis-address=None",
+        "--temp-dir=/tmp/ray",
+        "--metrics-agent-port=63754",
+        "--runtime-env-agent-port=57273",
+        "--logging-rotate-bytes=536870912",
+        "--logging-rotate-backup-count=5",
+        "--runtime-env-agent-port=57273",
+        "--gcs-address=145.100.134.10:60078",
+        "--session-name=session_2024-05-10_22-22-51_891121_317408",
+        "--temp-dir=/tmp/ray",
+        "--webui=",
+        "--cluster-id=879b3b44cb99333c28467faa83006965eab2cf294d5a8d2739388c4b",
+        "--startup-token=16",
+        "--worker-launch-time-ms=1715372574494"
+    ],
+    "state": "running",
+    "program": "/home/fhoekstra/miniconda3/envs/cbs2/lib/python3.7/site-packages/ray/_private/workers/default_worker.py",
+    "codePathLocal": null,
+    "git": {
+        "remote": "git@github.com:mael25/CBS2.git",
+        "commit": "f9735d306a42766339e07ed879d75f1765135a96"
+    },
+    "email": "flixtkc@gmail.com",
+    "root": "/home/fhoekstra/CBS2",
+    "host": "ws5",
+    "username": "fhoekstra",
+    "executable": "/home/fhoekstra/miniconda3/envs/cbs2/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 4199.9940625,
+        "min": 800.0,
+        "max": 5000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4114.423,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4114.457,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4142.179,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4132.126,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4168.323,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4121.74,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4114.425,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4108.625,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4126.908,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4136.335,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4112.634,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4127.817,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4114.438,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4124.745,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4198.08,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 4110.27,
+            "min": 800.0,
+            "max": 5000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 937.3305015563965,
+            "used": 813.9561462402344
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        }
+    ],
+    "memory": {
+        "total": 62.61648178100586
+    }
+}

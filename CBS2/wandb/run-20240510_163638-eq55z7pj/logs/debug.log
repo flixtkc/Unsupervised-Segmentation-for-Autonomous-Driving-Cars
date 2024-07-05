@@ -1,0 +1,84 @@
+2024-05-10 16:36:38,740 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2024-05-10 16:36:38,740 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Configure stats pid to 240862
+2024-05-10 16:36:38,740 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/.config/wandb/settings
+2024-05-10 16:36:38,740 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/CBS2/wandb/settings
+2024-05-10 16:36:38,740 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-05-10 16:36:38,740 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-05-10 16:36:38,741 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'evaluate_nocrash.py', 'program_abspath': '/home/fhoekstra/CBS2/evaluate_nocrash.py', 'program': 'evaluate_nocrash.py'}
+2024-05-10 16:36:38,741 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-05-10 16:36:38,741 INFO    MainThread:240862 [wandb_init.py:_log_setup():521] Logging user logs to /home/fhoekstra/CBS2/wandb/run-20240510_163638-eq55z7pj/logs/debug.log
+2024-05-10 16:36:38,741 INFO    MainThread:240862 [wandb_init.py:_log_setup():522] Logging internal logs to /home/fhoekstra/CBS2/wandb/run-20240510_163638-eq55z7pj/logs/debug-internal.log
+2024-05-10 16:36:38,741 INFO    MainThread:240862 [wandb_init.py:init():561] calling init triggers
+2024-05-10 16:36:38,741 INFO    MainThread:240862 [wandb_init.py:init():569] wandb.init called with sweep_config: {}
+config: {}
+2024-05-10 16:36:38,741 INFO    MainThread:240862 [wandb_init.py:init():611] starting backend
+2024-05-10 16:36:38,741 INFO    MainThread:240862 [wandb_init.py:init():615] setting up manager
+2024-05-10 16:36:38,742 INFO    MainThread:240862 [backend.py:_multiprocessing_setup():107] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-05-10 16:36:38,742 INFO    MainThread:240862 [wandb_init.py:init():623] backend started and connected
+2024-05-10 16:36:38,744 INFO    MainThread:240862 [wandb_init.py:init():715] updated telemetry
+2024-05-10 16:36:38,762 INFO    MainThread:240862 [wandb_init.py:init():748] communicating run to backend with 90.0 second timeout
+2024-05-10 16:36:39,071 INFO    MainThread:240862 [wandb_run.py:_on_init():2357] communicating current version
+2024-05-10 16:36:39,099 INFO    MainThread:240862 [wandb_run.py:_on_init():2366] got version response upgrade_message: "wandb version 0.17.0 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-05-10 16:36:39,100 INFO    MainThread:240862 [wandb_init.py:init():799] starting run threads in backend
+2024-05-10 16:36:41,324 INFO    MainThread:240862 [wandb_run.py:_console_start():2335] atexit reg
+2024-05-10 16:36:41,324 INFO    MainThread:240862 [wandb_run.py:_redirect():2190] redirect: wrap_raw
+2024-05-10 16:36:41,324 INFO    MainThread:240862 [wandb_run.py:_redirect():2255] Wrapping output streams.
+2024-05-10 16:36:41,324 INFO    MainThread:240862 [wandb_run.py:_redirect():2280] Redirects installed.
+2024-05-10 16:36:41,325 INFO    MainThread:240862 [wandb_init.py:init():842] run started, returning control to user process
+2024-05-10 16:36:42,576 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2024-05-10 16:36:42,576 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Configure stats pid to 240862
+2024-05-10 16:36:42,576 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/.config/wandb/settings
+2024-05-10 16:36:42,576 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/CBS2/wandb/settings
+2024-05-10 16:36:42,576 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-05-10 16:36:42,576 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-05-10 16:36:42,576 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'evaluate_nocrash.py', 'program_abspath': '/home/fhoekstra/CBS2/evaluate_nocrash.py', 'program': 'evaluate_nocrash.py'}
+2024-05-10 16:36:42,576 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-05-10 16:36:42,576 INFO    MainThread:240862 [wandb_init.py:_log_setup():521] Logging user logs to /home/fhoekstra/CBS2/wandb/run-20240510_163642-qdkiug9x/logs/debug.log
+2024-05-10 16:36:42,577 INFO    MainThread:240862 [wandb_init.py:_log_setup():522] Logging internal logs to /home/fhoekstra/CBS2/wandb/run-20240510_163642-qdkiug9x/logs/debug-internal.log
+2024-05-10 16:36:42,577 INFO    MainThread:240862 [wandb_init.py:init():561] calling init triggers
+2024-05-10 16:36:42,577 INFO    MainThread:240862 [wandb_init.py:init():569] wandb.init called with sweep_config: {}
+config: {}
+2024-05-10 16:36:42,577 INFO    MainThread:240862 [wandb_init.py:init():606] wandb.init() called when a run is still active
+2024-05-10 16:36:43,001 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Configure stats pid to 240862
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/.config/wandb/settings
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/CBS2/wandb/settings
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'evaluate_nocrash.py', 'program_abspath': '/home/fhoekstra/CBS2/evaluate_nocrash.py', 'program': 'evaluate_nocrash.py'}
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_init.py:_log_setup():521] Logging user logs to /home/fhoekstra/CBS2/wandb/run-20240510_163643-il4vff85/logs/debug.log
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_init.py:_log_setup():522] Logging internal logs to /home/fhoekstra/CBS2/wandb/run-20240510_163643-il4vff85/logs/debug-internal.log
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_init.py:init():561] calling init triggers
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_init.py:init():569] wandb.init called with sweep_config: {}
+config: {}
+2024-05-10 16:36:43,002 INFO    MainThread:240862 [wandb_init.py:init():606] wandb.init() called when a run is still active
+2024-05-10 16:36:43,406 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2024-05-10 16:36:43,406 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Configure stats pid to 240862
+2024-05-10 16:36:43,406 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/.config/wandb/settings
+2024-05-10 16:36:43,406 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/CBS2/wandb/settings
+2024-05-10 16:36:43,406 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-05-10 16:36:43,406 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-05-10 16:36:43,406 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'evaluate_nocrash.py', 'program_abspath': '/home/fhoekstra/CBS2/evaluate_nocrash.py', 'program': 'evaluate_nocrash.py'}
+2024-05-10 16:36:43,407 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-05-10 16:36:43,407 INFO    MainThread:240862 [wandb_init.py:_log_setup():521] Logging user logs to /home/fhoekstra/CBS2/wandb/run-20240510_163643-ryg8i4hd/logs/debug.log
+2024-05-10 16:36:43,407 INFO    MainThread:240862 [wandb_init.py:_log_setup():522] Logging internal logs to /home/fhoekstra/CBS2/wandb/run-20240510_163643-ryg8i4hd/logs/debug-internal.log
+2024-05-10 16:36:43,407 INFO    MainThread:240862 [wandb_init.py:init():561] calling init triggers
+2024-05-10 16:36:43,407 INFO    MainThread:240862 [wandb_init.py:init():569] wandb.init called with sweep_config: {}
+config: {}
+2024-05-10 16:36:43,407 INFO    MainThread:240862 [wandb_init.py:init():606] wandb.init() called when a run is still active
+2024-05-10 16:36:43,817 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Configure stats pid to 240862
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/.config/wandb/settings
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from /home/fhoekstra/CBS2/wandb/settings
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'evaluate_nocrash.py', 'program_abspath': '/home/fhoekstra/CBS2/evaluate_nocrash.py', 'program': 'evaluate_nocrash.py'}
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_init.py:_log_setup():521] Logging user logs to /home/fhoekstra/CBS2/wandb/run-20240510_163643-9dd6twl4/logs/debug.log
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_init.py:_log_setup():522] Logging internal logs to /home/fhoekstra/CBS2/wandb/run-20240510_163643-9dd6twl4/logs/debug-internal.log
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_init.py:init():561] calling init triggers
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_init.py:init():569] wandb.init called with sweep_config: {}
+config: {}
+2024-05-10 16:36:43,818 INFO    MainThread:240862 [wandb_init.py:init():606] wandb.init() called when a run is still active

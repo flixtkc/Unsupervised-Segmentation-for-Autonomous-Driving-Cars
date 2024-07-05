@@ -1,0 +1,161 @@
+
+[1m> Loading the world
+Scenario7
+Scenario3
+Base transform is blocking objects  Transform(Location(x=-319.369385, y=443.006805, z=0.600000), Rotation(pitch=0.000000, yaw=269.888458, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-319.369385, y=443.006805, z=0.600000), Rotation(pitch=0.000000, yaw=269.888458, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-319.369385, y=443.006805, z=0.600000), Rotation(pitch=0.000000, yaw=269.888458, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-318.329102, y=443.003326, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-318.329102, y=443.003326, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-317.329102, y=442.999695, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-317.329102, y=442.999695, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-317.329102, y=442.999695, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-316.329102, y=442.996063, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-316.329102, y=442.996063, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-315.329132, y=442.992432, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-315.329132, y=442.992432, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-315.329132, y=442.992432, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-314.329132, y=442.988800, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-314.329132, y=442.988800, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-313.329132, y=442.985168, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-313.329132, y=442.985168, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Base transform is blocking objects  Transform(Location(x=-313.329132, y=442.985168, z=0.600000), Rotation(pitch=0.000000, yaw=269.791809, roll=0.000000))
+Scenario7
+Scenario1
+Scenario7
+Scenario7
+Scenario1
+Scenario1
+Scenario1
+Scenario1
+Scenario1
+Town04 - RouteScenario_8
+[1m> Running the route
+Actor(id=1313, type=sensor.camera.rgb)
+0
+/home/fhoekstra/miniconda3/envs/cbs2/lib/python3.7/site-packages/torch/nn/functional.py:4228: UserWarning: Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details.
+  "Default grid_sample and affine_grid behavior has changed "
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+2200
+2300
+2400
+2500
+2600
+2700
+2800
+2900
+3000
+3100
+3200
+3300
+3400
+3500
+3600
+3700
+3800
+3900
+4000
+4100
+4200
+4300
+4400
+4500
+4600
+4700
+4800
+4900
+5000
+5100
+5200
+5300
+5400
+5500
+5600
+5700
+5800
+5900
+6000
+6100
+6200
+6300
+6400
+6500
+6600
+6700
+6800
+6900
+7000
+7100
+7200
+7300
+7400
+7500
+7600
+7700
+7800
+7900
+8000
+8100
+8200
+8300
+8400
+8500
+8600
+8700
+8800
+8900
+9000
+[91mStopping the route, the agent has crashed:
+[91m> axes don't match array
+[1m> Stopping the route
+[1m========= Results of RouteScenario_8 (repetition 1) ------ [91mFAILURE[39m[22m [1m=========
+╒═════════════════════════════════╤═════════════════════╕
+│ Start Time                      │ 2024-05-28 09:37:12 │
+├─────────────────────────────────┼─────────────────────┤
+│ End Time                        │ 2024-05-28 10:20:38 │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (System Time)          │ 2605.8s             │
+├─────────────────────────────────┼─────────────────────┤
+│ Duration (Game Time)            │ 450.1s              │
+├─────────────────────────────────┼─────────────────────┤
+│ Ratio (System Time / Game Time) │ 0.173               │
+╘═════════════════════════════════╧═════════════════════╛
+╒═══════════════════════╤═════════╤═════════╕
+│ Criterion             │ Result  │ Value   │
+├───────────────────────┼─────────┼─────────┤
+│ RouteCompletionTest   │ [91mFAILURE[39m │ 39.48 % │
+├───────────────────────┼─────────┼─────────┤
+│ OutsideRouteLanesTest │ [92mSUCCESS[39m │ 0 %     │
+├───────────────────────┼─────────┼─────────┤
+│ CollisionTest         │ [92mSUCCESS[39m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningRedLightTest   │ [92mSUCCESS[39m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ RunningStopTest       │ [92mSUCCESS[39m │ 0 times │
+├───────────────────────┼─────────┼─────────┤
+│ InRouteTest           │ [92mSUCCESS[39m │         │
+├───────────────────────┼─────────┼─────────┤
+│ AgentBlockedTest      │ [92mSUCCESS[39m │         │
+├───────────────────────┼─────────┼─────────┤
+│ Timeout               │ [92mSUCCESS[39m │         │
+╘═══════════════════════╧═════════╧═════════╛

@@ -1,0 +1,43 @@
+{
+    "available_scenarios": {
+        "Town10HD": [
+            {
+                "name": "train_scenario",
+                "ego_vehicles": [
+                    {
+                        "model": "vehicle.lincoln.mkz2017",
+                        "transform": {
+                            "x": 100.0,
+                            "y": 200.0,
+                            "z": 0.0,
+                            "yaw": 0.0
+                        },
+                        "autopilot": false
+                    }
+                ],
+                "other_actors": [
+                    {
+                        "model": "vehicle.audi.tt",
+                        "transform": {
+                            "x": 120.0,
+                            "y": 220.0,
+                            "z": 0.0,
+                            "yaw": 0.0
+                        },
+                        "autopilot": true
+                    },
+                    {
+                        "model": "vehicle.tesla.model3",
+                        "transform": {
+                            "x": 130.0,
+                            "y": 230.0,
+                            "z": 0.0,
+                            "yaw": 0.0
+                        },
+                        "autopilot": true
+                    }
+                ]
+            }
+        ]
+    }
+}
