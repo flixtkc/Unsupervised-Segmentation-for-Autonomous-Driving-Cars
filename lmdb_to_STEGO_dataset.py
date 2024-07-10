@@ -425,9 +425,15 @@ def main(args):
     output_path = args.output_path
     dataset_path = args.dataset_path
 
-    for data_subset in ('val'):
+    for data_subset in ('val', 'train'):
         dataset = ImageDataset(dataset_path + data_subset)
         print(dataset_path + data_subset)
+        print(f"Dataset path: {dataset_path + data_subset}")
+        print(f"Dataset length: {len(dataset)}")
+
+        if len(dataset) == 0:
+            print(f"No data found in the dataset at {dataset_path + data_subset}. Please check the dataset path and contents.")
+            return
         loader = _dataloader(dataset, batch_size=batch_size, num_workers=8)
         mean = []
         # to_pil_image = T.ToPILImage()
