@@ -453,8 +453,8 @@ def main(args):
             print(f"Memory usage: {process.memory_info().rss / (1024 ** 2)} MB")
             gc.collect()  # Clear unused memory 
 
-        # print(f"Mean {data_subset}: ", np.mean(mean, axis=0))
-        # print(f"Std {data_subset}:", np.std(mean, axis=0) * np.sqrt(batch_size))
+        print(f"Mean {data_subset}: ", np.mean(mean, axis=0))
+        print(f"Std {data_subset}:", np.std(mean, axis=0) * np.sqrt(batch_size))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process Carla dataset to jpg\png images for STEGO training phase.')
