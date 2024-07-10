@@ -4,8 +4,8 @@ STEGO/models/
 STEGO/saved_models/
 STEGO/src/logs/
 **/__pycache__/
-**/**/__pycache__/
-**/**/**/**/**/__pycache__/
+*/__pycache__/
+__pycache__/
 CBS2/dataset/
 CBS2/logs/
 CBS2/wandb/
