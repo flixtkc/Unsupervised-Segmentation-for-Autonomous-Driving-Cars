@@ -17,33 +17,6 @@ import sys
 
 torch.multiprocessing.set_sharing_strategy('file_system')
 
-COLOR_TO_CLASS = {
-    (0, 0, 0): 0,           # Unlabeled
-    (70, 70, 70): 1,        # Building
-    (190, 153, 153): 2,     # Fence
-    (72, 0, 90): 3,         # Other
-    (220, 20, 60): 4,       # Pedestrian
-    (153, 153, 153): 5,     # Pole
-    (157, 234, 50): 6,      # RoadLine
-    (128, 64, 128): 7,      # Road
-    (244, 35, 232): 8,      # Sidewalk
-    (107, 142, 35): 9,      # Vegetation
-    (0, 0, 142): 10,        # Car
-    (102, 102, 156): 11,    # Wall
-    (220, 220, 0): 12,      # TrafficSign
-    (70, 130, 180): 13,     # Sky
-    (81, 0, 81): 14,        # Ground
-    (150, 100, 100): 15,    # Bridge
-    (230, 150, 140): 16,    # RailTrack
-    (180, 165, 180): 17,    # GuardRail
-    (250, 170, 30): 18,     # TrafficLight
-    (110, 190, 160): 19,    # Static
-    (170, 120, 50): 20,     # Dynamic
-    (45, 60, 150): 21       # Water
-}
-
-
-
 def get_class_labels(dataset_name):
     if dataset_name.startswith("cityscapes"):
         return [
@@ -73,6 +46,14 @@ def get_class_labels(dataset_name):
             'roads and cars',
             'buildings and clutter',
             'trees and vegetation']
+    elif dataset_name == 'directory':
+        return [
+            'Unlabeled', 'Building', 'Fence', 'Other', 'Pedestrian',
+            'Pole', 'RoadLine', 'Road', 'Sidewalk', 'Vegetation',
+            'Vehicle', 'Wall', 'TrafficSign', 'Sky', 'Ground',
+            'Bridge', 'RailTrack', 'GuardRail', 'TrafficLight',
+            'Static', 'Dynamic', 'Water', 'Terrain'
+        ]
     else:
         raise ValueError("Unknown Dataset {}".format(dataset_name))
 
@@ -94,6 +75,8 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
             self.net = FeaturePyramidNet(cfg.granularity, cut_model, dim, cfg.continuous)
         elif cfg.arch == "dino":
             self.net = DinoFeaturizer(dim, cfg)
+        elif cfg.arch == "robust_resnet50":
+            self.net = load_model("robust_resnet50", data_dir).cuda()
         else:
             raise ValueError("Unknown arch {}".format(cfg.arch))
 
@@ -126,6 +109,8 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
 
         if self.cfg.dataset_name.startswith("cityscapes"):
             self.label_cmap = create_cityscapes_colormap()
+        elif self.cfg.dataset_name == "directory":
+            self.label_cmap = create_directory_colormap()
         else:
             self.label_cmap = create_pascal_label_colormap()
 
@@ -496,6 +481,8 @@ def my_app(cfg: DictConfig) -> None:
 
     #val_dataset = MaterializedDataset(val_dataset)
     train_loader = DataLoader(train_dataset, cfg.batch_size, shuffle=True, num_workers=cfg.num_workers, pin_memory=True)
+    steps_per_epoch = len(train_loader)
+    print(f"Steps per Epoch: {steps_per_epoch}")
 
     if cfg.submitting_to_aml:
         val_batch_size = 16

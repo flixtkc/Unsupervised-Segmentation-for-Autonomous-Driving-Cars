@@ -1,7 +1,7 @@
 output_root: 'logs'
-pytorch_data_dir: '/home/fhoekstra/STEGO/dataloader_test/v2/cropped/'
-experiment_name: "exp8_ms7500_nclass28_dim128"
-log_dir: "stego_test_3"
+pytorch_data_dir: '/home/fhoekstra/segment-carla/STEGO/dataloader_test/v2/'
+experiment_name: "exp13_ms7500_nclass23_dim64_dino_vitsmall"
+log_dir: "stego_test_4"
 azureml_logging: False
 submitting_to_aml: False
 
@@ -14,8 +14,8 @@ num_neighbors: 7
 dataset_name: "directory"
 
 # Used if dataset_name is "directory"
-dir_dataset_name: "directory_five_crop_0.5"
-dir_dataset_n_classes: 28
+dir_dataset_name: "small_800-400_R07_10HD"
+dir_dataset_n_classes: 23
 
 has_labels: False
 crop_type: "five"
@@ -29,14 +29,14 @@ use_true_labels: False
 use_recalibrator: False
 model_type: "vit_small"
 arch: "dino"
-use_fit_model: False
+use_fit_model: True
 dino_feat_type: "feat"
 projection_type: "nonlinear"
 #projection_type: linear
 dino_patch_size: 8
 granularity: 1
 continuous: True
-dim: 128
+dim: 70
 dropout: True
 zero_clamp: True
 

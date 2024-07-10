@@ -52,3 +52,28 @@
 [2024-06-19 16:09:53,540][torch.distributed.distributed_c10d][INFO] - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
 [2024-06-19 17:49:44,188][torch.distributed.distributed_c10d][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
 [2024-06-19 17:49:44,188][torch.distributed.distributed_c10d][INFO] - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+[2024-07-08 14:36:36,271][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 14:43:20,813][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 14:43:49,874][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 14:50:32,786][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 14:56:44,067][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:15:05,227][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:16:09,832][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:21:27,747][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:26:20,864][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:27:35,719][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:35:44,819][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:39:01,710][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:41:26,559][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:43:00,786][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:45:29,485][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:51:52,282][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 15:53:02,990][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 19:05:33,233][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 19:15:12,000][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-08 19:18:51,575][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-09 12:37:54,903][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-09 12:43:40,463][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-09 12:46:17,958][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-09 20:18:19,663][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0
+[2024-07-09 21:49:52,504][root][INFO] - Added key: store_based_barrier_key:1 to store for rank: 0

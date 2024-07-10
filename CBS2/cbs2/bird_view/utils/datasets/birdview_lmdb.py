@@ -9,8 +9,8 @@ import cv2
 
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
-from cbs2.bird_view.utils.image_utils import draw_msra_gaussian, gaussian_radius, CoordinateConverter
-from cbs2.bird_view.utils.carla_utils import visualize_birdview
+from CBS2.cbs2.bird_view.utils.image_utils import draw_msra_gaussian, gaussian_radius, CoordinateConverter
+from CBS2.cbs2.bird_view.utils.carla_utils import visualize_birdview
 import imgaug.augmenters as iaa
 import imgaug as ia
 from imgaug.augmentables import Keypoint, KeypointsOnImage

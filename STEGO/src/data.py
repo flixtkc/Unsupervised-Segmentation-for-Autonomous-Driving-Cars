@@ -71,7 +71,48 @@ def create_cityscapes_colormap():
               (0, 0, 0)]
     return np.array(colors)
 
-def convert_color_to_class(label_img, color_to_class, tolerance=10):
+def create_directory_colormap():
+    colors = [
+        (0, 0, 0), (70, 70, 70), (100, 40, 40), (55, 90, 80),
+        (220, 20, 60), (153, 153, 153), (157, 234, 50), (128, 64, 128),
+        (244, 35, 232), (107, 142, 35), (0, 0, 142), (102, 102, 156),
+        (220, 220, 0), (70, 130, 180), (81, 0, 81), (150, 100, 100),
+        (230, 150, 140), (180, 165, 180), (250, 170, 30), (110, 190, 160),
+        (170, 120, 50), (45, 60, 150), (145, 170, 100)
+    ]
+    return np.array(colors)
+
+
+
+CARLA_COLOR_TO_CLASS = {
+    (0, 0, 0): 0,          # Unlabeled
+    (70, 70, 70): 1,       # Building
+    (100, 40, 40): 2,      # Fence
+    (55, 90, 80): 3,       # Other
+    (220, 20, 60): 4,      # Pedestrian
+    (153, 153, 153): 5,    # Pole
+    (157, 234, 50): 6,     # RoadLine
+    (128, 64, 128): 7,     # Road
+    (244, 35, 232): 8,     # Sidewalk
+    (107, 142, 35): 9,     # Vegetation
+    (0, 0, 142): 10,       # Vehicle
+    (102, 102, 156): 11,   # Wall
+    (220, 220, 0): 12,     # TrafficSign
+    (70, 130, 180): 13,    # Sky
+    (81, 0, 81): 14,       # Ground
+    (150, 100, 100): 15,   # Bridge
+    (230, 150, 140): 16,   # RailTrack
+    (180, 165, 180): 17,   # GuardRail
+    (250, 170, 30): 18,    # TrafficLight
+    (110, 190, 160): 19,   # Static
+    (170, 120, 50): 20,    # Dynamic
+    (45, 60, 150): 21,     # Water
+    (145, 170, 100): 22    # Terrain
+}
+
+
+
+def convert_color_to_class(label_img, color_to_class, tolerance=0):
     label_img = np.array(label_img)
     class_label_img = np.zeros((label_img.shape[0], label_img.shape[1]), dtype=np.int32)
     
@@ -82,42 +123,6 @@ def convert_color_to_class(label_img, color_to_class, tolerance=10):
         class_label_img[mask] = class_index
 
     return class_label_img
-
-
-COLOR_TO_CLASS = {
-    (0, 0, 0): 0,           # Unlabeled
-    (128, 64, 128): 1,      # Roads
-    (244, 35, 232): 2,      # Sidewalks
-    (70, 70, 70): 3,        # Building
-    (102, 102, 156): 4,     # Wall
-    (190, 153, 153): 5,     # Fence
-    (153, 153, 153): 6,     # Pole
-    (250, 170, 30): 7,      # TrafficLight
-    (220, 220, 0): 8,       # TrafficSign
-    (107, 142, 35): 9,      # Vegetation
-    (152, 251, 152): 10,    # Terrain
-    (70, 130, 180): 11,     # Sky
-    (220, 20, 60): 12,      # Pedestrian
-    (255, 0, 0): 13,        # Rider
-    (0, 0, 142): 14,        # Car
-    (0, 0, 70): 15,         # Truck
-    (0, 60, 100): 16,       # Bus
-    (0, 60, 100): 17,       # Train
-    (0, 0, 230): 18,        # Motorcycle
-    (119, 11, 32): 19,      # Bicycle
-    (110, 190, 160): 20,    # Static
-    (170, 120, 50): 21,     # Dynamic
-    (55, 90, 80): 22,       # Other
-    (45, 60, 150): 23,      # Water
-    (157, 234, 50): 24,     # RoadLine
-    (81, 0, 81): 25,        # Ground
-    (150, 100, 100): 26,    # Bridge
-    (230, 150, 140): 27,    # RailTrack
-    (180, 165, 180): 28     # GuardRail
-}
-
-
-
 
 class DirectoryDataset(Dataset):
     def __init__(self, root, path, image_set, transform, target_transform):
@@ -145,7 +150,7 @@ class DirectoryDataset(Dataset):
         if self.label_files is not None:
             label_fn = self.label_files[index]
             label = Image.open(os.path.join(self.label_dir, label_fn))
-            label = convert_color_to_class(label, COLOR_TO_CLASS, tolerance=10)  # Convert color to class labels with tolerance
+            label = convert_color_to_class(label, CARLA_COLOR_TO_CLASS, tolerance=0)  # Convert color to class labels
             label = torch.from_numpy(label).long()  # Convert to tensor
 
         seed = np.random.randint(2147483647)
@@ -157,7 +162,6 @@ class DirectoryDataset(Dataset):
             random.seed(seed)
             torch.manual_seed(seed)
             label = self.target_transform(label)
-
         else:
             label = torch.zeros(img.shape[1], img.shape[2], dtype=torch.int64) - 1
 

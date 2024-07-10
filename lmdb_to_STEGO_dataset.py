@@ -425,15 +425,16 @@ def main(args):
     output_path = args.output_path
     dataset_path = args.dataset_path
 
-    for data_subset in ('train', 'val'):
+    for data_subset in ('val'):
         dataset = ImageDataset(dataset_path + data_subset)
         print(dataset_path + data_subset)
         loader = _dataloader(dataset, batch_size=batch_size, num_workers=8)
         mean = []
-        to_pil_image = T.ToPILImage()
+        # to_pil_image = T.ToPILImage()
         process = psutil.Process(os.getpid())
 
-        for j, (rgb_imgs, col_segs, bird_view, locations, cmd, speed, wp_method) in enumerate(tqdm.tqdm(loader)):
+        # Usable variables: (bird_view, locations, cmd, speed, wp_method)
+        for j, (rgb_imgs, col_segs, _, _, _, _, _) in enumerate(tqdm.tqdm(loader)):
             # Use Parallel processing for saving images
             Parallel(n_jobs=cpu_count())(
                 delayed(process_image)(rgb_imgs[i], col_segs[i], j, i, output_path, data_subset) for i in range(rgb_imgs.size(0))
@@ -446,14 +447,14 @@ def main(args):
             print(f"Memory usage: {process.memory_info().rss / (1024 ** 2)} MB")
             gc.collect()  # Clear unused memory 
 
-        print(f"Mean {data_subset}: ", np.mean(mean, axis=0))
-        print(f"Std {data_subset}:", np.std(mean, axis=0) * np.sqrt(batch_size))
+        # print(f"Mean {data_subset}: ", np.mean(mean, axis=0))
+        # print(f"Std {data_subset}:", np.std(mean, axis=0) * np.sqrt(batch_size))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process Carla dataset to jpg\png images for STEGO training phase.')
     parser.add_argument('--batch_size', type=int, default=256, help='Batch size for processing')
-    parser.add_argument('--output_path', type=str, default='/home/fhoekstra/STEGO/dataloader_test/v2/small_800-400_R07', help='Output path for saving images')
-    parser.add_argument('--dataset_path', type=str, default='/home/fhoekstra/CBS2/dataset/small_split/', help='Path to the dataset')
+    parser.add_argument('--output_path', type=str, default='/home/fhoekstra/segment-carla/STEGO/dataloader_test/v2/small_800-400_R07_10HD', help='Output path for saving images')
+    parser.add_argument('--dataset_path', type=str, default='/home/fhoekstra/segment-carla/CBS2/dataset/small_split_10HD/', help='Path to the dataset')
 
     args = parser.parse_args()
     main(args)

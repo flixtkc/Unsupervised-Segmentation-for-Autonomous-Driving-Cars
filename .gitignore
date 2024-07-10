@@ -2,7 +2,9 @@ STEGO/dataloader_test/
 STEGO/testing_data/
 STEGO/models/
 STEGO/saved_models/
+STEGO/src/logs/
 CBS2/dataset/
 CBS2/logs/
+CBS2/wandb/
 DriveAndSegment/dino_deitsmall16_pretrain.pth
 DriveAndSegment/weights/
