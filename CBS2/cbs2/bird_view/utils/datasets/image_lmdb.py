@@ -452,8 +452,8 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process Carla dataset to jpg\png images for STEGO training phase.')
     parser.add_argument('--batch_size', type=int, default=256, help='Batch size for processing')
-    parser.add_argument('--output_path', type=str, default='/home/fhoekstra/STEGO/dataloader_test/v2/small_800-400_R07', help='Output path for saving images')
-    parser.add_argument('--dataset_path', type=str, default='/home/fhoekstra/CBS2/dataset/small_split/', help='Path to the dataset')
+    parser.add_argument('--output_path', type=str, default='/home/fhoekstra/segment-carla/STEGO/dataloader_test/v2/small_800-400_R07_10HD', help='Output path for saving images')
+    parser.add_argument('--dataset_path', type=str, default='/home/fhoekstra/segment-carla/CBS2/dataset/small_split_10HD/', help='Path to the dataset')
 
     args = parser.parse_args()
     main(args)
