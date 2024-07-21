@@ -13,11 +13,14 @@ CBS2/dataset/
 CBS2/logs/
 CBS2/wandb/
 CBS2/results/
+CBS2/assets/testing_10HD/AdditionalMaps_0.9.10.tar.gz
 
 
 DriveAndSegment/dino_deitsmall16_pretrain.pth
 DriveAndSegment/weights/
 
+
+testing_videos/
 
 ffmpeg-6.1.1/
 ffmpeg-snapshot.tar.bz2
