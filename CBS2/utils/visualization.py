@@ -111,10 +111,7 @@ def visualize_obs(rgb, yaw, control, speed, target_speed=None, cmd=None, red=Non
 
 
     if sem is not None:
-        sem_viz = visualize_sem(sem)
-        print(f"Debug - Shape of visualized sem: {sem_viz.shape}")
-        print(f"Debug - Shape of canvas: {canvas.shape}")
-        print(f"Debug - Shape of RGB: {rgb.shape}")
+        sem_viz = visualize_semantic(sem[:, :, 2])
         canvas = np.concatenate([sem_viz, canvas], axis=1)
 
     if lidar is not None:
@@ -174,9 +171,9 @@ def visualize_birdview_big(birdview, num_channels=3):
     return canvas
 
 def visualize_semantic(sem, sem_colors=SEM_COLORS):
-    # Create an empty canvas with 3 channels
-    canvas = np.zeros(sem.shape + (3,), dtype=np.uint8)
+    canvas = np.zeros((sem.shape[0], sem.shape[1], 3), dtype=np.uint8)
     unique_labels = np.unique(sem)
+    
     for label in unique_labels:
         if label in sem_colors:
             mask = sem == label

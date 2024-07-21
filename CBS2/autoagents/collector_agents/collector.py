@@ -156,25 +156,13 @@ class QCollector(AutonomousAgent):
         rs = _random_string()
         if self.log_wandb:
             try:
-                # Print the shape of the first element in vizs for further debugging
-                print(f"Shape of the first element in vizs: {self.vizs[0].shape}")
-                # Print some sample data for the first element in vizs
-                print(f"Sample data of first element in vizs: {self.vizs[0][0, 0:5, :]}")
-
                 # Separate RGB and segmentation parts from self.vizs
-                rgbsegmentations = [viz[:, :viz.shape[1] // 2, :] for viz in self.vizs]
+                segmentations = [viz[:, :viz.shape[1] // 2, :] for viz in self.vizs]
                 rgbs = [viz[:, viz.shape[1] // 2:, :] for viz in self.vizs]
-
-                # Debug: Print the shape and some sample data for the first RGB and segmentation
-                print(f"Shape of the first RGB image: {rgbs[0].shape}")
-                print(f"Sample data of first RGB image: {rgbs[0][0, 0:5, :]}")
-                print(f"Shape of the first segmentation image: {segmentations[0].shape}")
-                print(f"Sample data of first segmentation image: {segmentations[0][0, 0:5, :]}")
 
                 # Ensure video_data has only RGB channels
                 video_data = np.stack(rgbs).transpose((0, 3, 1, 2))
                 num_frames, channels, height, width = video_data.shape
-                print(f"Video data shape: {video_data.shape}")
 
                 if channels != 3:
                     raise ValueError("The channels dimension of the video data must be 3 for RGB.")
@@ -187,10 +175,8 @@ class QCollector(AutonomousAgent):
                 print(f"Logged video with name: {video_name}")
 
                 # Log semantic segmentation video
-                print(f"Shape of the first element in segmentations: {segmentations[0].shape}")
                 video_data_segmentation = np.stack(segmentations).transpose((0, 3, 1, 2))
                 num_frames_segmentation, channels_segmentation, height_segmentation, width_segmentation = video_data_segmentation.shape
-                print(f"Video data shape: {video_data_segmentation.shape}")
 
                 if channels_segmentation != 3:
                     raise ValueError("The channels dimension of the video data must be 3 for semantic segmentation.")
