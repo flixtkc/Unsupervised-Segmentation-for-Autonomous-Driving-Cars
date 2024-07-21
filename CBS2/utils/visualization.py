@@ -24,13 +24,29 @@ COLORS = [
         ]
 
 SEM_COLORS = {
-    4 : (220, 20, 60),
-    5 : (153, 153, 153),
-    6 : (157, 234, 50),
-    7 : (128, 64, 128),
-    8 : (244, 35, 232),
-    10: (0, 0, 142),
-    18: (220, 220, 0),
+    0: (0, 0, 0),          # Unlabeled
+    1: (70, 70, 70),       # Building
+    2: (100, 40, 40),      # Fence
+    3: (55, 90, 80),       # Other
+    4: (220, 20, 60),      # Pedestrian
+    5: (153, 153, 153),    # Pole
+    6: (157, 234, 50),     # RoadLine
+    7: (128, 64, 128),     # Road
+    8: (244, 35, 232),     # Sidewalk
+    9: (107, 142, 35),     # Vegetation
+    10: (0, 0, 142),       # Vehicle
+    11: (102, 102, 156),   # Wall
+    12: (220, 220, 0),     # TrafficSign
+    13: (70, 130, 180),    # Sky
+    14: (81, 0, 81),       # Ground
+    15: (150, 100, 100),   # Bridge
+    16: (230, 150, 140),   # RailTrack
+    17: (180, 165, 180),   # GuardRail
+    18: (250, 170, 30),    # TrafficLight
+    19: (110, 190, 160),   # Static
+    20: (170, 120, 50),    # Dynamic
+    21: (45, 60, 150),     # Water
+    22: (145, 170, 100)    # Terrain
 }
 
 def visualize_big(rgb, yaw, control, speed, cmd=None, lbl=None, sem=None, text_args=(cv2.FONT_HERSHEY_SIMPLEX, 0.3, (255,255,255), 1)):
@@ -95,7 +111,10 @@ def visualize_obs(rgb, yaw, control, speed, target_speed=None, cmd=None, red=Non
 
 
     if sem is not None:
-        sem_viz = visualize_semantic(sem)
+        sem_viz = visualize_sem(sem)
+        print(f"Debug - Shape of visualized sem: {sem_viz.shape}")
+        print(f"Debug - Shape of canvas: {canvas.shape}")
+        print(f"Debug - Shape of RGB: {rgb.shape}")
         canvas = np.concatenate([sem_viz, canvas], axis=1)
 
     if lidar is not None:
@@ -154,11 +173,16 @@ def visualize_birdview_big(birdview, num_channels=3):
 
     return canvas
 
-def visualize_semantic(sem, labels=[4,6,7,10,18]):
-    canvas = np.zeros(sem.shape+(3,), dtype=np.uint8)
-    for label in labels:
-        canvas[sem==label] = SEM_COLORS[label]
-
+def visualize_semantic(sem, sem_colors=SEM_COLORS):
+    # Create an empty canvas with 3 channels
+    canvas = np.zeros(sem.shape + (3,), dtype=np.uint8)
+    unique_labels = np.unique(sem)
+    for label in unique_labels:
+        if label in sem_colors:
+            mask = sem == label
+            canvas[mask] = sem_colors[label]
+        else:
+            print(f"Warning: Label {label} not in SEM_COLORS, skipping.")
     return canvas
 
 def visualize_semantic_processed(sem, labels=[4,6,7,10,18]):

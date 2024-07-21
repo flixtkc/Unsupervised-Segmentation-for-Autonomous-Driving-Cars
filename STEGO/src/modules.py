@@ -138,10 +138,12 @@ class ClusterLookup(nn.Module):
         self.n_classes = n_classes
         self.dim = dim
         self.clusters = torch.nn.Parameter(torch.randn(n_classes, dim))
+        self.reset_parameters()
 
     def reset_parameters(self):
         with torch.no_grad():
-            self.clusters.copy_(torch.randn(self.n_classes, self.dim))
+            rand_init = torch.randn(self.n_classes, self.dim)
+            self.clusters.copy_(rand_init)
 
     def forward(self, x, alpha, log_probs=False):
         normed_clusters = F.normalize(self.clusters, dim=1)
@@ -154,7 +156,9 @@ class ClusterLookup(nn.Module):
         else:
             cluster_probs = nn.functional.softmax(inner_products * alpha, dim=1)
 
-        cluster_loss = -(cluster_probs * inner_products).sum(1).mean()
+        cluster_loss = -(cluster_probs * inner_products).sum(1).mean()# Add a small positive constant
+        l2_reg = torch.norm(self.clusters, p=2) * 1e-4  # L2 regularization term
+        cluster_loss += l2_reg  # Adding L2 regularization to cluster loss
         if log_probs:
             return nn.functional.log_softmax(inner_products * alpha, dim=1)
         else:

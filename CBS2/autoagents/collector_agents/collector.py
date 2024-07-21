@@ -69,6 +69,10 @@ class QCollector(AutonomousAgent):
 
         for key, value in config.items():
             setattr(self, key, value)
+        
+        global width, height
+        width = config['width']
+        height = config['height']
 
         device = torch.device('cuda')
         ego_model = EgoModel(1./FPS*(self.num_repeat+1)).to(device)
@@ -154,21 +158,48 @@ class QCollector(AutonomousAgent):
             try:
                 # Print the shape of the first element in vizs for further debugging
                 print(f"Shape of the first element in vizs: {self.vizs[0].shape}")
-                
+                # Print some sample data for the first element in vizs
+                print(f"Sample data of first element in vizs: {self.vizs[0][0, 0:5, :]}")
+
+                # Separate RGB and segmentation parts from self.vizs
+                rgbsegmentations = [viz[:, :viz.shape[1] // 2, :] for viz in self.vizs]
+                rgbs = [viz[:, viz.shape[1] // 2:, :] for viz in self.vizs]
+
+                # Debug: Print the shape and some sample data for the first RGB and segmentation
+                print(f"Shape of the first RGB image: {rgbs[0].shape}")
+                print(f"Sample data of first RGB image: {rgbs[0][0, 0:5, :]}")
+                print(f"Shape of the first segmentation image: {segmentations[0].shape}")
+                print(f"Sample data of first segmentation image: {segmentations[0][0, 0:5, :]}")
+
                 # Ensure video_data has only RGB channels
-                video_data = np.stack(self.vizs)[..., :3].transpose((0, 3, 1, 2))
+                video_data = np.stack(rgbs).transpose((0, 3, 1, 2))
                 num_frames, channels, height, width = video_data.shape
                 print(f"Video data shape: {video_data.shape}")
-                
+
                 if channels != 3:
                     raise ValueError("The channels dimension of the video data must be 3 for RGB.")
-                
+
                 # Log video with a unique name to avoid overwriting
                 video_name = f'vid_{rs}.mp4'
                 wandb.log({
                     video_name: wandb.Video(video_data, fps=20, format='mp4')
                 })
                 print(f"Logged video with name: {video_name}")
+
+                # Log semantic segmentation video
+                print(f"Shape of the first element in segmentations: {segmentations[0].shape}")
+                video_data_segmentation = np.stack(segmentations).transpose((0, 3, 1, 2))
+                num_frames_segmentation, channels_segmentation, height_segmentation, width_segmentation = video_data_segmentation.shape
+                print(f"Video data shape: {video_data_segmentation.shape}")
+
+                if channels_segmentation != 3:
+                    raise ValueError("The channels dimension of the video data must be 3 for semantic segmentation.")
+
+                video_name_segmentation = f'vid_segmentation_{rs}.mp4'
+                wandb.log({
+                    video_name_segmentation: wandb.Video(video_data_segmentation, fps=20, format='mp4')
+                })
+                print(f"Logged segmentation video with name: {video_name_segmentation}")
             except Exception as e:
                 print(f"Error creating wandb.Video: {e}")
 
@@ -266,8 +297,8 @@ class QCollector(AutonomousAgent):
             'roll': 0.0,
             'pitch': 0.0,
             'yaw': 0.0,
-            'width': 800,
-            'height': 400,
+            'width': width,
+            'height': height,
             'fov': 120,
             'id': 'rgb'
         })
@@ -279,8 +310,8 @@ class QCollector(AutonomousAgent):
             'roll': 0.0,
             'pitch': 0.0,
             'yaw': 0.0,
-            'width': 800,
-            'height': 400,
+            'width': width,
+            'height': height,
             'fov': 120,
             'id': 'segmentation'
         })
@@ -293,8 +324,10 @@ class QCollector(AutonomousAgent):
         _, rgb = input_data.get('rgb')
         _, segmentation = input_data.get('segmentation')
 
-        rgbs.append(rgb[...,:3]) # Keeping R, G and B channels
-        segmentations.append(segmentation[...,2]) # Labels are encoded in the 2nd channel
+        rgb_image = rgb[...,:3]
+        rgbs.append(rgb_image) # Keeping R, G and B channels
+        segmentation = segmentation[..., :3] if segmentation.shape[-1] == 4 else segmentation[..., :3]
+        segmentations.append(segmentation) 
 
         _, lbl = input_data.get('MAP')
         _, col = input_data.get('COLLISION')
@@ -385,15 +418,12 @@ class QCollector(AutonomousAgent):
             print(f'{flush_length}')
 
         spd = ego.get('spd')
-        visualization = visualize_obs(rgb, yaw/180*math.pi, (steer, throt, brake), spd, cmd=cmd.value, lbl=None, sem=None, tls=tls)
-    
+        visualization = visualize_obs(rgb, yaw/180*math.pi, (steer, throt, brake), spd, cmd=cmd.value, lbl=None, sem=segmentation, tls=tls)
+        self.vizs.append(visualization)
         # Ensure visualization has the correct shape
         # if visualization.shape[-1] != 3:
         #     print(f"Visualization shape mismatch: {visualization.shape}")
         #     return carla.VehicleControl(steer=steer, throttle=throt, brake=brake)
-
-        self.vizs.append(visualization)
-
         # viz = visualize_obs(rgb, yaw/180*math.pi, (steer, throt, brake), spd, cmd=cmd.value, lbl=lbl_copy, sem=segmentation, tls=tls)
         # print(f'vizs shape: {self.vizs.shape}')
         # self.vizs.append(viz)

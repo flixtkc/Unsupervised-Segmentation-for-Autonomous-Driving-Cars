@@ -44,7 +44,7 @@ def world_to_pixel(x,y,ox,oy,ori_ox, ori_oy, offset=(-80,160), size=320, angle_j
     return np.array([pixel_x, pixel_y]) + offset
 
 
-def project_to_image(pixel_x, pixel_y, tran=[0.,0.,0.], rot=[0.,0.,0.], fov=90, w=800, h=400, camera_world_z=1.4, crop_size=192):
+def project_to_image(pixel_x, pixel_y, tran=[0.,0.,0.], rot=[0.,0.,0.], fov=90, w=width, h=height, camera_world_z=1.4, crop_size=192):
     # Apply fixed offset tp pixel_y
     pixel_y -= 2*PIXELS_PER_METER
 
@@ -240,11 +240,11 @@ class ImageDataset(Dataset):
         index = self.idx_map[idx]
 
         # bird_view = np.frombuffer(lmdb_txn.get(('birdview_%04d'%index).encode()), np.uint8).reshape(320,320,7)
-        segmentation = np.frombuffer(lmdb_txn.get(('segmentation_%04d'%index).encode()), np.uint8).reshape(400, 800)
+        segmentation = np.frombuffer(lmdb_txn.get(('segmentation_%04d'%index).encode()), np.uint8).reshape(height, width)
         col_seg = map_labels_to_colors(segmentation)
         segmentation = self.down_scale(segmentation)
         
-        assert_shape = (200, 400)
+        assert_shape = (height/2, width/2)
         assert segmentation.shape == assert_shape, "Incorrect shape ({}), got {}".format(assert_shape, segmentation.shape)
 
         tl_info = int.from_bytes(lmdb_txn.get(('trafficlights_%04d' % index).encode()), 'little')
@@ -258,7 +258,7 @@ class ImageDataset(Dataset):
         cam_x, cam_y, cam_z = np.frombuffer(lmdb_txn.get(('cam_location_%04d'%index).encode()), np.float32)
         cam_pitch, cam_yaw, cam_roll = np.frombuffer(lmdb_txn.get(('cam_rotation_%04d'%index).encode()), np.float32)
 
-        rgb_image = np.fromstring(lmdb_txn.get(('rgb_%04d'%index).encode()), np.uint8).reshape(400,800,3)
+        rgb_image = np.fromstring(lmdb_txn.get(('rgb_%04d'%index).encode()), np.uint8).reshape(height,width,3)
 
         if self.augmenter:
             rgb_images = [self.augmenter(image=rgb_image) for i in range(self.batch_aug)]
@@ -282,7 +282,7 @@ class ImageDataset(Dataset):
         segmentation = segmentation.astype(np.float32)
         image_coord_wp = np.array(image_coord_wp, dtype=np.float32)
 
-        assert_shape = (200, 400, len(SEG_CLASSES))
+        assert_shape = (height/2, width/2, len(SEG_CLASSES))
         assert segmentation.shape == assert_shape, "Incorrect shape ({}), got {}".format(assert_shape, segmentation.shape)
         assert len(image_coord_wp) == self.n_step, "Not enough points, got {}".format(image_coord_wp.shape)
 
@@ -398,7 +398,7 @@ def map_labels_to_colors(segmentation):
 
 def extract_segmentation(lmdb_txn, index):
     # Retrieve the segmentation image
-    segmentation = np.frombuffer(lmdb_txn.get(('segmentation_%04d' % index).encode()), np.uint8).reshape(400, 800)
+    segmentation = np.frombuffer(lmdb_txn.get(('segmentation_%04d' % index).encode()), np.uint8).reshape(height, width)
     return segmentation
 
 def save_colored_segmentation(segmentation, output_path, index):
@@ -452,8 +452,14 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process Carla dataset to jpg\png images for STEGO training phase.')
     parser.add_argument('--batch_size', type=int, default=256, help='Batch size for processing')
-    parser.add_argument('--output_path', type=str, default='/home/fhoekstra/segment-carla/STEGO/dataloader_test/v2/small_800-400_R07_10HD', help='Output path for saving images')
-    parser.add_argument('--dataset_path', type=str, default='/home/fhoekstra/segment-carla/CBS2/dataset/small_split_10HD/', help='Path to the dataset')
+    parser.add_argument('--output_path', type=str, default='/storage/felix/Afstudeerproject/small_10HD', help='Output path for saving images')
+    parser.add_argument('--dataset_path', type=str, default='/storage/felix/Afstudeerproject/small_split_10HD/', help='Path to the dataset')
 
     args = parser.parse_args()
+
+    with open(args.config_path, 'r') as f:
+        config = yaml.safe_load(f)
+
+    width = config['width']
+    height = config['height']
     main(args)

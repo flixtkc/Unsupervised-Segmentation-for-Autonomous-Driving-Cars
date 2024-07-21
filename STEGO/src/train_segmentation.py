@@ -63,6 +63,7 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
         super().__init__()
         self.cfg = cfg
         self.n_classes = n_classes
+        self.warmup_steps = 1
 
         if not cfg.continuous:
             dim = n_classes
@@ -231,7 +232,13 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
         loss += linear_loss
         self.log('loss/linear', linear_loss, **log_args)
 
+        if self.global_step < self.warmup_steps:
+            warmup_factor = self.global_step / self.warmup_steps
+        else:
+            warmup_factor = 1.0
+
         cluster_loss, cluster_probs = self.cluster_probe(detached_code, None)
+        cluster_loss *= warmup_factor + 1e-3
         loss += cluster_loss
         self.log('loss/cluster', cluster_loss, **log_args)
         self.log('loss/total', loss, **log_args)
@@ -246,7 +253,7 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
             self.linear_probe.reset_parameters()
             self.cluster_probe.reset_parameters()
             self.trainer.optimizers[1] = torch.optim.Adam(list(self.linear_probe.parameters()), lr=5e-3)
-            self.trainer.optimizers[2] = torch.optim.Adam(list(self.cluster_probe.parameters()), lr=5e-3)
+            self.trainer.optimizers[2] = torch.optim.Adam(list(self.cluster_probe.parameters()), lr=2e-3)
 
         if self.global_step % 2000 == 0 and self.global_step > 0:
             print("RESETTING TFEVENT FILE")

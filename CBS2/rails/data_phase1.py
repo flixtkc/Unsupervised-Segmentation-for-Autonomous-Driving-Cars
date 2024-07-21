@@ -48,14 +48,14 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--num-runners', type=int, default=8)
+    parser.add_argument('--num-runners', type=int, default=1)
     parser.add_argument('--scenario', choices=['train_scenario', 'nocrash_train_scenario'], default='train_scenario')
     parser.add_argument('--host', default='localhost', help='IP of the host server (default: localhost)')
     parser.add_argument('--port', type=int, default=2000)
     parser.add_argument('--trafficManagerSeed', type=str, default='0', help='Seed used by the TrafficManager (default: 0)')
     parser.add_argument('--timeout', type=int, default=600, help='Set the CARLA client timeout value in seconds')
     parser.add_argument('--start_port', type=int, default=2000, help='Starting port number for CARLA servers.')
-    parser.add_argument('--repetitions', type=int, default=5, help='Number of repetitions per route.')
+    parser.add_argument('--repetitions', type=int, default=2, help='Number of repetitions per route.')
     parser.add_argument("--track", type=str, default='MAP', help="Participation track: SENSORS, MAP")
     parser.add_argument('--resume', type=bool, default=False, help='Resume execution from last checkpoint?')
     parser.add_argument("--checkpoint", type=str, default='simulation_results.json', help="Path to checkpoint used for saving statistics and resuming")
