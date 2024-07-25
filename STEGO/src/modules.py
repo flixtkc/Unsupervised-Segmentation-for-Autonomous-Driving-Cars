@@ -156,9 +156,9 @@ class ClusterLookup(nn.Module):
         else:
             cluster_probs = nn.functional.softmax(inner_products * alpha, dim=1)
 
-        cluster_loss = -(cluster_probs * inner_products).sum(1).mean()# Add a small positive constant
-        l2_reg = torch.norm(self.clusters, p=2) * 1e-4  # L2 regularization term
-        cluster_loss += l2_reg  # Adding L2 regularization to cluster loss
+        cluster_loss = -(cluster_probs * inner_products).sum(1).mean()
+        # l2_reg = torch.norm(self.clusters, p=2) * 1e-4  # L2 regularization term
+        # cluster_loss += l2_reg  # Adding L2 regularization to cluster loss
         if log_probs:
             return nn.functional.log_softmax(inner_products * alpha, dim=1)
         else:

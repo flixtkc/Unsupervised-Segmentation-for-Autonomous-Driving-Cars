@@ -63,7 +63,7 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
         super().__init__()
         self.cfg = cfg
         self.n_classes = n_classes
-        self.warmup_steps = 1
+        self.warmup_steps = 1000
 
         if not cfg.continuous:
             dim = n_classes
@@ -414,8 +414,8 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
             main_params.extend(self.decoder.parameters())
 
         net_optim = torch.optim.Adam(main_params, lr=self.cfg.lr)
-        linear_probe_optim = torch.optim.Adam(list(self.linear_probe.parameters()), lr=5e-3)
-        cluster_probe_optim = torch.optim.Adam(list(self.cluster_probe.parameters()), lr=5e-3)
+        linear_probe_optim = torch.optim.Adam(list(self.linear_probe.parameters()), lr=3e-3)
+        cluster_probe_optim = torch.optim.Adam(list(self.cluster_probe.parameters()), lr=2e-3)
 
         return net_optim, linear_probe_optim, cluster_probe_optim
 

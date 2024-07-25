@@ -125,7 +125,7 @@ def convert_color_to_class(label_img, color_to_class, tolerance=0):
     return class_label_img
 
 class DirectoryDataset(Dataset):
-    def __init__(self, root, path, image_set, transform, target_transform, cropping):
+    def __init__(self, root, path, image_set, transform, target_transform, train_test_model):
         super(DirectoryDataset, self).__init__()
         self.split = image_set
         self.dir = os.path.join(root, path)
@@ -134,7 +134,7 @@ class DirectoryDataset(Dataset):
 
         self.transform = transform
         self.target_transform = target_transform
-        self.cropping = cropping
+        self.train_test_model = train_test_model
 
         self.img_files = np.array(sorted(os.listdir(self.img_dir)))
         assert len(self.img_files) > 0
@@ -151,7 +151,7 @@ class DirectoryDataset(Dataset):
         if self.label_files is not None:
             label_fn = self.label_files[index]
             label = Image.open(os.path.join(self.label_dir, label_fn)).convert('RGB')
-            if self.cropping == False:
+            if self.train_test_model:
                 label = convert_color_to_class(label, CARLA_COLOR_TO_CLASS, tolerance=0)  # Convert color to class labels
                 label = torch.from_numpy(label).long()  # Convert to tensor
 
@@ -163,7 +163,10 @@ class DirectoryDataset(Dataset):
         if self.label_files is not None:
             random.seed(seed)
             torch.manual_seed(seed)
+            label = label.unsqueeze(0)  # Add a batch dimension
             label = self.target_transform(label)
+            label = label.squeeze(0)  # Remove the batch dimension
+
         else:
             label = torch.zeros(img.shape[1], img.shape[2], dtype=torch.int64) - 1
 
@@ -512,7 +515,7 @@ class ContrastiveSegDataset(Dataset):
         elif dataset_name == "directory":
             self.n_classes = cfg.dir_dataset_n_classes
             dataset_class = DirectoryDataset
-            extra_args = dict(path=cfg.dir_dataset_name, cropping=cfg.cropping)
+            extra_args = dict(path=cfg.dir_dataset_name, train_test_model=cfg.train_test_model)
         elif dataset_name == "cityscapes" and crop_type is None:
             self.n_classes = 27
             dataset_class = CityscapesSeg

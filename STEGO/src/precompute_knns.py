@@ -78,7 +78,7 @@ def my_app(cfg: DictConfig) -> None:
                         cfg=cfg,
                     )
 
-                    loader = DataLoader(dataset, 64 , shuffle=False, num_workers=cfg.num_workers, pin_memory=False)
+                    loader = DataLoader(dataset, cfg.batch_size , shuffle=False, num_workers=cfg.num_workers, pin_memory=False)
 
                     with torch.no_grad():
                         normed_feats = get_feats(par_model, loader)

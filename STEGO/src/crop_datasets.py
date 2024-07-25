@@ -6,10 +6,18 @@ import torch
 from omegaconf import DictConfig, OmegaConf
 from pytorch_lightning.utilities.seed import seed_everything
 from torch.utils.data import DataLoader
-from torchvision.transforms.functional import five_crop, _get_image_size, crop
+from torchvision.transforms.functional import five_crop, crop
 from tqdm import tqdm
 from torch.utils.data import Dataset
 
+
+def _get_image_size(img):
+    if isinstance(img, Image.Image):
+        return img.size
+    elif isinstance(img, torch.Tensor) and img.dim() > 2:
+        return img.shape[-2:][::-1]
+    else:
+        raise TypeError(f"Unexpected type {type(img)}")
 
 def _random_crops(img, size, seed, n):
     """Crop the given image into four corners and the central crop.
@@ -68,6 +76,11 @@ class RandomCropComputer(Dataset):
             raise ValueError("Bad image shape {}".format(img.shape))
 
     def random_crops(self, i, img):
+        # Ensure the image is in [C, H, W] format
+        if len(img.shape) == 4 and img.shape[0] == 1:
+            img = img.squeeze(0)  # Remove the leading dimension if it's 1
+        if img.shape[-1] == 3:
+            img = img.permute(2, 0, 1)  # Convert from [H, W, C] to [C, H, W]
         return _random_crops(img, self._get_size(img), i, 5)
 
     def five_crops(self, i, img):
@@ -133,11 +146,7 @@ class RandomCropComputer(Dataset):
         for crop_num, (img, label) in enumerate(zip(imgs, labels)):
             img_num = item * 5 + crop_num
             img_arr = img.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to('cpu', torch.uint8).numpy()
-            # print("label: ", label.shape)
-            # print("img: ", img.shape)
-            # print("img_arr: ", img_arr.shape)
             label_arr = label.permute(1, 2, 0).to('cpu', torch.uint8).numpy()
-            # print("label_arr: ", label_arr.shape)
             Image.fromarray(img_arr).save(join(self.img_dir, "{}.jpg".format(img_num)), 'JPEG')
             Image.fromarray(label_arr).save(join(self.label_dir, "{}.png".format(img_num)), 'PNG')
         return True
@@ -159,8 +168,10 @@ def my_app(cfg: DictConfig) -> None:
 
     dataset_names = ["directory"]
     img_sets = ["train", "val"]
-    crop_types = ["five"]
-    crop_ratios = [.5]
+    # crop_types = ['random', "five"]
+    # crop_ratios = [.7, 0.5]
+    crop_types = [ "five"]
+    crop_ratios = [ 0.5]
 
     for crop_ratio in crop_ratios:
         for crop_type in crop_types:

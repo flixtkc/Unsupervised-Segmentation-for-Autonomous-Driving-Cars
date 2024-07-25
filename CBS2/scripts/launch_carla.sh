@@ -7,6 +7,6 @@ do
     fuser $((port + 1))/tcp -k
     fuser $((port + 2))/tcp -k
     #$HOME/CarlaUE4.sh -world-port=$port -vulkan -world-port=$port &
-    $CARLA_ROOT/CarlaUE4.sh -world-port=$port -opengl &
+    $CARLA_ROOT/CarlaUE4.sh -world-port=$port -opengl -quality-level=Epic &
 done
 wait

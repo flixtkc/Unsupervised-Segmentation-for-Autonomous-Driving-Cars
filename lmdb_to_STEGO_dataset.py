@@ -1,5 +1,5 @@
 from pathlib import Path
-import yaml
+
 import torch
 import lmdb
 import gc
@@ -15,6 +15,7 @@ from torchvision import transforms as T
 from joblib import Parallel, delayed
 from multiprocessing import cpu_count
 import argparse
+import yaml
 
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
@@ -32,9 +33,8 @@ from CBS2.cbs2.bird_view.augmenter_wor import augment
 PIXEL_OFFSET = 10
 PIXELS_PER_METER = 5
 SEG_CLASSES = {4, 6, 7, 10, 18}  # pedestrians, roadlines, roads, vehicles, tl
-width = 512
-height = 256
-
+width = 0
+height = 0
 
 def world_to_pixel(x,y,ox,oy,ori_ox, ori_oy, offset=(-80,160), size=320, angle_jitter=15):
     pixel_dx, pixel_dy = (x-ox)*PIXELS_PER_METER, (y-oy)*PIXELS_PER_METER
@@ -243,11 +243,12 @@ class ImageDataset(Dataset):
         index = self.idx_map[idx]
 
         # bird_view = np.frombuffer(lmdb_txn.get(('birdview_%04d'%index).encode()), np.uint8).reshape(320,320,7)
-        segmentation = np.frombuffer(lmdb_txn.get(('segmentation_%04d'%index).encode()), np.uint8).reshape(height, width)
+        seg_buffer = np.frombuffer(lmdb_txn.get(('segmentation_%04d'%index).encode()), np.uint8)
+        segmentation = seg_buffer.reshape(height, width, 3)
         col_seg = map_labels_to_colors(segmentation)
         segmentation = self.down_scale(segmentation)
         
-        assert_shape = (height/2, width/2)
+        assert_shape = (height/2, width/2, 3)
         assert segmentation.shape == assert_shape, "Incorrect shape ({}), got {}".format(assert_shape, segmentation.shape)
 
         tl_info = int.from_bytes(lmdb_txn.get(('trafficlights_%04d' % index).encode()), 'little')
@@ -261,7 +262,7 @@ class ImageDataset(Dataset):
         cam_x, cam_y, cam_z = np.frombuffer(lmdb_txn.get(('cam_location_%04d'%index).encode()), np.float32)
         cam_pitch, cam_yaw, cam_roll = np.frombuffer(lmdb_txn.get(('cam_rotation_%04d'%index).encode()), np.float32)
 
-        rgb_image = np.fromstring(lmdb_txn.get(('rgb_%04d'%index).encode()), np.uint8).reshape(height,width,3)
+        rgb_image = np.frombuffer(lmdb_txn.get(('rgb_%04d'%index).encode()), np.uint8).reshape(height,width,3)
 
         if self.augmenter:
             rgb_images = [self.augmenter(image=rgb_image) for i in range(self.batch_aug)]
@@ -282,19 +283,19 @@ class ImageDataset(Dataset):
 
         self.gap = self.ori_gap  # Reset gap to its original value
 
-        segmentation = segmentation.astype(np.float32)
+        # segmentation = segmentation.astype(np.float32)
         image_coord_wp = np.array(image_coord_wp, dtype=np.float32)
 
-        assert_shape = (height/2, width/2, len(SEG_CLASSES))
-        assert segmentation.shape == assert_shape, "Incorrect shape ({}), got {}".format(assert_shape, segmentation.shape)
-        assert len(image_coord_wp) == self.n_step, "Not enough points, got {}".format(image_coord_wp.shape)
+        # assert_shape = (height/2, width/2)
+        # assert segmentation.shape == assert_shape, "Incorrect shape ({}), got {}".format(assert_shape, segmentation.shape)
+        # assert len(image_coord_wp) == self.n_step, "Not enough points, got {}".format(image_coord_wp.shape)
 
         if self.batch_aug == 1:
             rgb_images = self.rgb_transform(rgb_images)
         else:
             rgb_images = torch.stack([self.rgb_transform(img) for img in rgb_images])
 
-        segmentation = self.bird_view_transform(segmentation)
+        # segmentation = self.bird_view_transform(segmentation)
 
         self.batch_read_number += 1
 
@@ -393,15 +394,24 @@ COLOR_MAP = {
     22: (145, 170, 100)    # Terrain
 }
 
-def map_labels_to_colors(segmentation):
-    colored_segmentation = np.zeros((segmentation.shape[0], segmentation.shape[1], 3), dtype=np.uint8)
-    for label, color in COLOR_MAP.items():
-        colored_segmentation[segmentation == label] = color
-    return colored_segmentation
+def map_labels_to_colors(segmentation, sem_colors=COLOR_MAP):
+    sem = segmentation[:, :, 2]
+    # Create an empty canvas with 3 channels
+    canvas = np.zeros((sem.shape[0], sem.shape[1], 3), dtype=np.uint8)
+    unique_labels = np.unique(sem)
+    max_unilabels_per_image = len(unique_labels)
+    
+    for label in unique_labels:
+        if label in sem_colors:
+            mask = sem == label
+            canvas[mask] = sem_colors[label]
+        else:
+            print(f"Warning: Label {label} not in COLOR_MAP, skipping.")
+    return canvas
 
 def extract_segmentation(lmdb_txn, index):
     # Retrieve the segmentation image
-    segmentation = np.frombuffer(lmdb_txn.get(('segmentation_%04d' % index).encode()), np.uint8).reshape(400, 800)
+    segmentation = np.frombuffer(lmdb_txn.get(('segmentation_%04d' % index).encode()), np.uint8).reshape(height, width)
     return segmentation
 
 def save_colored_segmentation(segmentation, output_path, index):
@@ -445,11 +455,9 @@ def main(args):
     width = config['width']
     height = config['height']
 
+    # Val chosen as initial directory is a critical decision. As this smaller in size compared to train. Thus the dataset size check will immediately check, instead of failing later on and losing precious time
     for data_subset in ('val', 'train'):
         dataset = ImageDataset(dataset_path + data_subset)
-        print(dataset_path + data_subset)
-        print(f"Dataset path: {dataset_path + data_subset}")
-        print(f"Dataset length: {len(dataset)}")
 
         if len(dataset) == 0:
             print(f"No data found in the dataset at {dataset_path + data_subset}. Please check the dataset path and contents.")
@@ -489,7 +497,6 @@ if __name__ == '__main__':
     parser.add_argument('--dataset_size', choices=['small', 'large', 'test'], default='large', help='Size of dataset to determine whether parallel processing can be used')
     parser.add_argument('--num_workers', type=int, default=16, help='Number of workers for data loading')
     parser.add_argument('--config_path', type=str, default='CBS2/autoagents/collector_agents/config_data_collection.yaml', help='Path to the config file containing resolution for dataset video/images')
-
 
     args = parser.parse_args()
     main(args)

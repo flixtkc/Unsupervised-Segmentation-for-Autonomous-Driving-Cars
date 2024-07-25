@@ -34,7 +34,7 @@ def process_batch_with_stego(frames, model, use_linear_probe=True):
     original_height, original_width = frames[0].shape[:2]
 
     # Resize and transform frames for segmentation
-    resized_frames = [cv2.resize(frame, (resize_res, resize_res), interpolation=cv2.INTER_LINEAR) for frame in frames]
+    resized_frames = [cv2.resize(frame, (resize_res, resize_res), interpolation=cv2.INTER_NEAREST) for frame in frames]
     transform = get_transform(resize_res, False, "center")
     imgs = torch.stack([transform(Image.fromarray(resized_frame)).to(device).half() for resized_frame in resized_frames])
 
