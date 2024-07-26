@@ -182,59 +182,82 @@ def calculate_metrics(segmented_video_path, ground_truth_video_path):
 # Calculate metrics
 # calculate_metrics(segmented_video_save_path, seg_gt_path)
 
-def segment_and_show_image():
-    model = model0
 
-    j = 28
-    i = 239
-    # Load and transform the images
-    img_path = '/storage/felix/Afstudeerproject/small_800-400_R07/imgs/train/train_'+ str(j)+ '_'+ str(i)+ '_bird_view_frame_RGB.jpg'
-    img = Image.open(img_path)
-    og_img = img
-    original_height, original_width = np.array(img).shape[:2]
-
-    transform = get_transform(448, False, "center")
-    img = transform(img).unsqueeze(0).cuda()
-
-    gt_img_path = '/storage/felix/Afstudeerproject/small_800-400_R07/labels/train/lab_train_'+ str(j)+ '_'+ str(i)+'_bird_view_frame_SEG.png'
-    gt_img = Image.open(gt_img_path)
-    og_gt = gt_img
-
+def segment_image_part(model, img_part):
     with torch.no_grad():
-        code1 = model(img)
-        code2 = model(img.flip(dims=[3]))
-        code  = (code1 + code2.flip(dims=[3])) / 2
-        code = F.interpolate(code, img.shape[-2:], mode='bilinear', align_corners=False)
+        code1 = model(img_part)
+        code2 = model(img_part.flip(dims=[3]))
+        code = (code1 + code2.flip(dims=[3])) / 2
+        code = F.interpolate(code, img_part.shape[-2:], mode='bilinear', align_corners=False)
         linear_probs = torch.log_softmax(model.linear_probe(code), dim=1).cpu()
         cluster_probs = model.cluster_probe(code, 2, log_probs=True).cpu()
 
-        single_img = img[0].cpu()
+        single_img = img_part[0].cpu()
         linear_pred = dense_crf(single_img, linear_probs[0]).argmax(0)
         cluster_pred = dense_crf(single_img, cluster_probs[0]).argmax(0)
-        segmented_frame_lin = model.label_cmap[linear_pred].astype(np.uint8)
-        segmented_frame_lin = cv2.resize(segmented_frame_lin, (original_width, original_height), interpolation=cv2.INTER_NEAREST)
-        segmented_frame_clu = model.label_cmap[cluster_pred].astype(np.uint8)
-        segmented_frame_clu = cv2.resize(segmented_frame_clu, (original_width, original_height), interpolation=cv2.INTER_NEAREST)
+        return linear_pred, cluster_pred
 
+def segment_and_show_image():
+    model = model0
 
-    fig, ax = plt.subplots(1, 3, figsize=(20, 5))
+    j = 0
+    i = 9
+    # Load and transform the images
+    img_path = '/storage/felix/Afstudeerproject/small_10HD/imgs/val/val_'+ str(j)+ '_'+ str(i)+ '_bird_view_frame_RGB.jpg'
+    img = Image.open(img_path)
+    og_img = np.array(img)
+    original_height, original_width = og_img.shape[:2]
 
-    # Display the images with correct aspect ratio
-    ax[0].imshow(unnorm(img)[0].permute(1, 2, 0).cpu(), aspect='auto', extent=[0, img.shape[2], 0, img.shape[1]])
-    ax[0].set_title("Image")
-    ax[1].imshow(segmented_frame_clu, aspect='auto', extent=[0, cluster_pred.shape[1], 0, cluster_pred.shape[0]])
-    ax[1].set_title("Cluster Predictions")
-    ax[2].imshow(segmented_frame_lin, aspect='auto', extent=[0, linear_pred.shape[1], 0, linear_pred.shape[0]])
-    ax[2].set_title("Linear Probe Predictions")
+    # Slice the image into two parts
+    middle = original_width // 2
+    left_img = og_img[:, :middle, :]
+    right_img = og_img[:, middle:, :]
 
-    # Remove the axes for a cleaner look
+    transform = get_transform(448, False, "center")
+
+    # Transform and segment the left part
+    left_img = Image.fromarray(left_img)
+    left_img = transform(left_img).unsqueeze(0).cuda()
+    left_linear_pred, left_cluster_pred = segment_image_part(model, left_img)
+
+    # Transform and segment the right part
+    right_img = Image.fromarray(right_img)
+    right_img = transform(right_img).unsqueeze(0).cuda()
+    right_linear_pred, right_cluster_pred = segment_image_part(model, right_img)
+
+    # Combine the segmented parts
+    segmented_frame_lin = np.hstack((
+        model.label_cmap[left_linear_pred].astype(np.uint8),
+        model.label_cmap[right_linear_pred].astype(np.uint8)
+    ))
+
+    segmented_frame_clu = np.hstack((
+        model.label_cmap[left_cluster_pred].astype(np.uint8),
+        model.label_cmap[right_cluster_pred].astype(np.uint8)
+    ))
+
+    segmented_frame_lin = cv2.resize(segmented_frame_lin, (original_width, original_height), interpolation=cv2.INTER_NEAREST)
+    segmented_frame_clu = cv2.resize(segmented_frame_clu, (original_width, original_height), interpolation=cv2.INTER_NEAREST)
+
+    gt_img_path = '/storage/felix/Afstudeerproject/small_10HD/labels/val/lab_val_'+ str(j)+ '_'+ str(i)+'_bird_view_frame_SEG.png'
+    gt_img = Image.open(gt_img_path)
+    og_gt = np.array(gt_img)
+
+    fig, ax = plt.subplots(2, 2, figsize=(15, 10))
+
+    ax[0, 0].imshow(og_img)
+    ax[0, 0].set_title("Original Image")
+    ax[0, 1].imshow(segmented_frame_clu)
+    ax[0, 1].set_title("Cluster Predictions")
+    ax[1, 0].imshow(segmented_frame_lin)
+    ax[1, 0].set_title("Linear Probe Predictions")
+    ax[1, 1].imshow(og_gt)
+    ax[1, 1].set_title("Ground Truth", color='white')
+
     remove_axes(ax)
-
-    # Adjust layout to prevent overlap
     plt.tight_layout()
-
-    # Show the plot
     plt.show()
+
 
 
 segment_and_show_image()
