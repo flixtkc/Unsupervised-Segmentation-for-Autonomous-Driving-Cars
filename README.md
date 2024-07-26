@@ -85,7 +85,7 @@ CBS2/assets/
 ```
 ##### config_data_collection.yaml:
 
-This file contains all the settings that define the data collection phase.
+This file contains all the settings that define the data collection phase. Especially the resolution settings are key in determining how well the segmentation model will perform.
 ##### collector.py:
 
 This file specifies all the collector functions. It also includes configurations for logging to Weights & Biases (wandb), which is set to False by default.
@@ -99,55 +99,74 @@ This file contains settings for configuring specific driving episodes.
 Here you can find the routes and scenarions for each town, which are needed to run any data collection succesfully. You need to specify which one to use in data_phase1.py
 
 
-### Launching Carla
+### Data Collection
 
-Make sure to start Carla in another terminal before proceeding to data collection or evaluation.
+Make sure to start Carla in one terminal, then boot up a second screen/terminal, go to the CBS2 subdirecory there run the data collection script:
 ```bash
+# Terminal 1:
 $CBS2_ROOT/scripts/launch_carla.sh <num_runners> <port>
+
+# Terminal 2:
+cd CBS2
+python rails/data_phase1.py --port <port> --num-runner=<num_runners>
 ```
 Note: if there are multiple runners, `<port>` is also the increment between them.
 
-### Data collection
-Data collection configuration (settable in `autoagents/collector_agents/config_data_collection.yml`):
-- **num_per_flush**: Amount of timestep data per save
-- **noise_collect**: Add noise to the steering command of the agent
-- **main_data_dir**: Location where the data should be saved
-- ...
 
-To start the data collection:
+### Data Processing To Desired Format
+
+After you have verified the collected data and are content with the results, you can continue to the data conversion step. Where the saved data has to be processed before the STEGO model can effectively train with it. Go back to the main directory where you can find the lmdb_to_STEGO_dataset converter script. Inspect the possible argument passed to the functions before running this script. NOTE: the dataset input path and output path need to be specified
+
+#### Switch Environments
+After this step it is important to deactivate cbs2 and activate the stego environmetn, as the next steps will need that adjustment.
+
+### Configurations for STEGO
+
+Inspect the configuration for the STEGO related script in:
 ```bash
-python -m rails.data_phase1
+cd STEGO/src/
+vi configs/train_config.yml
 ```
-### Training
-##### Teacher
+Specify the dataset path, which is identical to the output path used in the previous step. For the next step you need to adjust the hyperparameters related to the cropping. As these heavily influence memory related errors.
+
+### Cropping Utility
 ```bash
-cd cbs0/training
-python -m train_birdview --segmentation --dynamic --batch_size=<batch_size>  --dataset_dir=<path_to_data_dir> --log_dir=<path_to_log_dir> --max_epoch=<max_epoch>
+has_labels: False
+crop_type: "five"
+crop_ratio: .5
+res: 200
+loader_crop_type: "center"
 ```
-##### Student
-Phase 0: warm-up stage
+The crop_type determines whether it takes 5 crops one from each corner and then on in the middle, or, random crops from the input image(s). Now the crop ratio determines how big/small the resulting crops will be compared to the input dimensions of the image. Tweak until you have favorable settings. After cropping please adjust the dataset path in the config file to point to the newly created cropped dataset directory
+
+### Precomputation KNN indices
+To speed up training steps it is crucial to run a precomputation of KNN indices 
 ```bash
-cd cbs0/training
-python -m train_image_phase0 --log_dir=<path_to_log_dir> --teacher_path=<path_to_teacher_dir/model-XX.th> --dataset_dir=<path_to_data_dir>
-```
-Phase 1: actual training
-```bash
-cd cbs0/training
-python -m train_image_phase1 --log_dir=<path_to_log_dir> --teacher_path=<path_to_teacher_dir/model-XX.th> --ckpt=<path_to_phase0_student_dir/model-XX.th> --dataset_dir=<path_to_data_dir> --pretrained --max_epoch=<max_epoch>
+python precompute_knns.py
 ```
 
-To train a model with PPM add for example `--ppm=1-2-3-6` (where [1,2,3,6] are the desired bin sizes used for the adaptive pooling). For FPN, add `--fpn`. These arguments must be added both for phase 0 and phase 1.
-### Evaluation
-
-
-- To evaluate on Carla Leaderboard:
+### Train STEGO Model
+Now all that is left is to run a training script on your custom data to see the segmentation results of the STEGO model on the collected  Carla simulator data. Please specifiy in the config file the logs directory!
 ```bash
-python -m evaluate
+pyton train_segmentation.py
 ```
-To evaluate a model trained with PPM or FPN, add respectively `--mod=ppm` or `--mod=fpn`. This will change the configuration file used. The default configuration file for each type of model are located in the `results_lead` folder. The results of the evaluation are saved there as well.
-
-- To evaluate on NoCrash:
+During training you can monitor the entire phase by running a tensorboard session in the specified logs directory to see some intermittent progress.
 ```bash
-python -m evaluate_nocrash --town=<TownXX> --weather <test/train> --resume
+# Example
+tensorboard --logdir logs/logs/five_crop_0.5/directory_new_crop_date_Jul25_02-25-32/default/version_0/
 ```
-To visualize in the W&B logs not only the RGB image with vehicle commands overprinted but also a saliency map made using guided back propagation (implementation: modified from [Pytorch GradCAM](https://github.com/jacobgil/pytorch-grad-cam), paper: J. Springenberg, A. Dosovitskiy, T. Brox, and M. Riedmiller, [Striving for Simplicity](https://arxiv.org/abs/1412.6806): The All Convolutional Net”, Computer Vision and Pattern Recognition (CVPR), 2014), it is necessary to comment the code in `autoagents/cbs2_agent.py` at `l.191` and uncomment `l.194-l.199`.
+
+### Evaluation and Testing
+To evaluate and compare your training results you can monitor tensorboard logs of course where you can see various metrics over time, but you can also run a real-time segmentation script to see a  real-life application. As discussed in the the thesis this resulted in no real-time application, but will be improved upon in the future. Additionally, there is also a script that takes a normal video and segments it for you given the specified model, and then saves the video. You can uncomment the image or video segmenter, whichever one you prefer. For an example please see the testing_videos/ directory!
+
+```bash
+cd STEGO/src/
+python STEGO_create_segmented_video_or_image.py
+python STEGO_real_time_segmenter.py
+# See
+cd ../../testing_videos/
+```
+
+### Extra tests
+Additionally, there are several scripts to test your systems batch size, num workers and ssh X11 forwarding in case you run into errors. 
+
