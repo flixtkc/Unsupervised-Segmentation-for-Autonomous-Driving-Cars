@@ -1,0 +1,16 @@
+# Default
+data:
+  train_images: 'CARLA_dataset/images/train'
+  train_labels: 'CARLA_dataset/labels/train'
+  val_images: 'CARLA_dataset/images/val'
+  val_labels: 'CARLA_dataset/labels/val'
+
+train:
+  batch_size: 8
+  num_workers: 4
+  learning_rate: 0.001
+  epochs: 100
+
+model:
+  architecture: 'resnet50'
+  pretrained: True
