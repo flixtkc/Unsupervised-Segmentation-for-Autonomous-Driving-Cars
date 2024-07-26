@@ -81,16 +81,22 @@ To set up configurations for the data collection there are several files to cons
 CBS2/autoagents/collector_agents/config_data_collection.yaml
 CBS2/autoagents/collector_agents/collector.py
 CBS2/rails/data_phase1.py
+CBS2/assets/
 ```
-config_data_collection.yaml:
+##### config_data_collection.yaml:
 
 This file contains all the settings that define the data collection phase.
-collector.py:
+##### collector.py:
 
 This file specifies all the collector functions. It also includes configurations for logging to Weights & Biases (wandb), which is set to False by default.
-data_phase1.py:
 
+##### data_phase1.py:
+The former denoting all the settings that define the data collection phase. The second one specifies all the collector functions, where also the logging to wandb can be found (default False). The latter containing the settings to set the driving episode specific config
 This file contains settings for configuring specific driving episodes.
+
+##### assets/ directory:
+
+Here you can find the routes and scenarions for each town, which are needed to run any data collection succesfully. You need to specify which one to use in data_phase1.py
 
 
 ### Launching Carla
